@@ -17,3 +17,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/login' , ['App\Http\Controllers\Api\authController','login'])->name('login');
 Route::post('/register' , ['App\Http\Controllers\Api\authController','register'])->name('register');
 
+
+Route::middleware('auth:sanctum')->group(function () {
+    // return $request->user();
+});
