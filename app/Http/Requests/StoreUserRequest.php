@@ -24,19 +24,19 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => ['required'],
             'email' => ['required','unique:App\Models\User,email'],
-            'password' => ['required', 'min:8']
+            'password' => ['required', 'min:8','confirmed']
         ];
     }
     public function messages()
     {
         return
             [
-                'name.required' => 'The Name Field Is Required Yasta',
-                'email.required' => 'The Email Field Is Required Yasta',
-                'email.unique' => 'The Email Field Is Must Be Uniqe Yasta',
+                'name.required' => 'The Name Field Is Required',
+                'email.required' => 'The Email Field Is Required',
+                'email.unique' => 'The Email Field Is Must Be Uniqe',
                 'email.min' => 'The Email Field Has Minimum 3 Characters',
-                'password.required' => 'The password Field Is Required Yasta',
-                'password.min' => 'The password Field Has Minimum 10 Characters',
+                'password.required' => 'The password Field Is Required',
+                'password.min' => 'The password Field Has Minimum 8 Characters',
             ];
     }
 }
