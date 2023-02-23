@@ -6,17 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('sub_track_super_track', function (Blueprint $table) {
+        Schema::create('sub_track_super_tracks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('track_id');
-            $table->unsignedBigInteger('subtrack_id');
-            $table->foreign('track_id')->references('id')->on('tracks');
-            $table->foreign('subtrack_id')->references('id')->on('sub_track');
+            $table->unsignedBigInteger('super_track_id');
+            $table->unsignedBigInteger('sub_track_id');
+            $table->foreign('super_track_id')->references('id')->on('tracks')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('sub_track_id')->references('id')->on('sub_tracks')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

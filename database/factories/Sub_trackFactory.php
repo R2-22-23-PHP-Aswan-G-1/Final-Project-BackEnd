@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Instructor>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class InstructorFactory extends Factory
+class Sub_trackFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,8 @@ class InstructorFactory extends Factory
     public function definition(): array
     {
         return [
-            
+                'name' => fake()->name(),
+                'track_id'=>rand()
         ];
     }
 }

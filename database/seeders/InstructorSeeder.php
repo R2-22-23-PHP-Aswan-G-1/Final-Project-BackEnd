@@ -15,7 +15,6 @@ class InstructorSeeder extends Seeder
     public function run(): void
     {
         $user_ids = User::where('role_id' , 2)->get();
-
         for ($i=0; $i < count($user_ids); $i++) {
             $instructor = Instructor::create([
                 'rate' => $i,
