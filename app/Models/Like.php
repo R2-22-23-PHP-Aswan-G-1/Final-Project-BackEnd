@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Like extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'created_at',
+        'user_id',
+        'comment_id'
+
+    ];
+
+    public function comment(){
+        $this->belongsTo(Comment::class);
+    }
+    public function user(){
+        $this->belongsTo(User::class);
+    }
 }

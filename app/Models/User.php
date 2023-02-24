@@ -48,4 +48,13 @@ class User extends Authenticatable
     {
         return $this->hasOne(Instructor::class);
     }
+    public function question(){
+        $this->hasMeny(Question::class );
+    }
+    public function replay(){
+        $this->hasMeny(Replay::class);
+    }
+    public function like(){
+        $this->hasMeny(like::class);
+    }
 }
