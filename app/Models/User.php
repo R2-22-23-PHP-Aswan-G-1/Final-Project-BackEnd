@@ -52,9 +52,9 @@ class User extends Authenticatable
         $this->hasMeny(Question::class );
     }
     public function replay(){
-        $this->hasMeny(Replay::class);
+        $this->hasMany(Replay::class);
     }
     public function like(){
-        $this->hasMeny(like::class);
+        $this->hasMany(like::class);
     }
 }

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Models;
-
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,6 +18,7 @@ class Question extends Model
     ];
 
     public function user(){
-        $this->belongsTo(Users::class);
+
+      return $this->belongsTo(User::class);
     }
 }

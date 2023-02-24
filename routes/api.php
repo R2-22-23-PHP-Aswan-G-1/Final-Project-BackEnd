@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\Role;
-use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\Api\QuestionController;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
