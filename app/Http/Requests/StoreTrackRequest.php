@@ -18,7 +18,7 @@ class StoreTrackRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'subTrackIds' => ['required','exists:App\Models\Sub_track,id'],
+            'subTrackIds' => ['required','exists:App\Models\Subtrack,id'],
         ];
     }
     public function messages()

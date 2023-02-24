@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Sub_track extends Model
+class supertrack_subtracks extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'supertrack_id',
+        'subtrack_id'
     ];
-
-    public function superTrack(){
-        return $this->belongsToMany(Track::class,'sub_track_super_tracks','sub_track_id');
-    }
 }

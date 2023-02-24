@@ -8,12 +8,12 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('sub_track_super_tracks', function (Blueprint $table) {
+        Schema::create('supertrack_subtracks', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('super_track_id');
-            $table->unsignedBigInteger('sub_track_id');
-            $table->foreign('super_track_id')->references('id')->on('tracks')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('sub_track_id')->references('id')->on('sub_tracks')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('supertrack_id');
+            $table->unsignedBigInteger('subtrack_id');
+            $table->foreign('supertrack_id')->references('id')->on('supertracks')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('subtrack_id')->references('id')->on('subtracks')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

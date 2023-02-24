@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Sub_track;
+use App\Models\Subtrack;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,7 +13,7 @@ class SubTrackSeeder extends Seeder
         $names = ['PHP', 'NODE JS', 'LARAVEL', 'MY SQL', 'OOP', 'REST-API',
         'Symfony' ,'Apache' , 'Xampp'];
        for ($i=0; $i < count($names); $i++) {
-           $sub_track = Sub_track::create([
+           $sub_track = Subtrack::create([
                'name' => $names[$i],
            ]);
        }

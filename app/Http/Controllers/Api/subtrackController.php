@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTrackRequest;
 use App\Http\Resources\SubtrackResource;
-use App\Models\Sub_track;
+use App\Models\Subtrack;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\ResponseTrait;
@@ -17,33 +17,29 @@ class subtrackController extends Controller
      */
     public function index()
     {
-        return SubtrackResource::collection(Sub_track::all());
+        return SubtrackResource::collection(Subtrack::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreTrackRequest $request)
+    public function store(Request $request)
     {
-        Sub_track::create([
+        Subtrack::create([
             'name'=>$request->name,
         ]);
         return response(['message'=>'success']);
     }
-
     
-    public function show(Sub_track $sub_track)
-    {
-        //
-    }
+    // public function show(Sub_track $sub_track)
+    // {
+    //     //
+    // }
 
-    public function update(Request $request, Sub_track $sub_track)
-    {
-        //
-    }
+    // public function update(Request $request, Sub_track $sub_track)
+    // {
+    //     //
+    // }
 
-    public function destroy(Sub_track $sub_track)
-    {
-        //
-    }
+    // public function destroy(Sub_track $sub_track)
+    // {
+    //     //
+    // }
 }
