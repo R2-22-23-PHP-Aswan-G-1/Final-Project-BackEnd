@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Role;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +14,7 @@ class RoleSeeder extends Seeder
     {
         $roles = ['user', 'instructor', 'admin'];
         for ($i=0; $i < count($roles); $i++) {
-            $user = Role::create([
+            $role = Role::create([
                 'name' => $roles[$i],
             ]);
         }

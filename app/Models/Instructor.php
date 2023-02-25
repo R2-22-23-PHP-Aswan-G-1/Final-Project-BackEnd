@@ -20,6 +20,7 @@ class Instructor extends Model
 
 
 
+
     function skills(){
         return $this->belongsToMany(Skill::class,'instructor_skills');
     }
@@ -27,6 +28,15 @@ class Instructor extends Model
     public function testimonials()
     {
         return $this->hasMany(Testimonial::class);
+    }
+
+
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
+
+    public function certificates(){
+        return $this->hasOne(Certificate::class);
     }
 
 }

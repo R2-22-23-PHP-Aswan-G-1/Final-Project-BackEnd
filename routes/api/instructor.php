@@ -10,12 +10,14 @@ use App\Http\Requests\StoreUserRequest;
 use App\Models\Instructor;
 use App\Http\Controllers\Api\InstructorController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
 });
 
-// Route::get('/instructor/{id}' , function (Request $request) {
-//     $user = Instructor::where('user_id' , $request->id)->first();
-//     return $user->user;
-// });
 Route::post('/instructorSkill',[InstructorController::class,'storeSkills']);
 Route::get('/instructor/{instructor}',[InstructorController::class,'show']);
+Route::post('/storeCertificate' , [InstructorController::class,'store'])->middleware('auth:sanctum');
+Route::post('/storePost' , [InstructorController::class,'store'])->middleware('auth:sanctum');
+Route::get('/instructor/{id}' , function (Request $request) {
+    $user = Instructor::where('user_id' , $request->id)->first();
+    return $user->user;
+});
+

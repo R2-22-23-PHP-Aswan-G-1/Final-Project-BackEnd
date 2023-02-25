@@ -8,15 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Certificate extends Model
 {
     use HasFactory;
-
-
     protected $fillable = [
         'certificate',
         'instructor_id'
     ];
-
-
-
+    public function instructor(){
+        return $this->belongsTo(Certificate::class);
+    }
 }
 
 

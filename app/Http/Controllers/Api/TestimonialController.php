@@ -38,10 +38,10 @@ class TestimonialController extends Controller
     public function show(  $testimonial)
     {
         $testimonial= Testimonial ::find( $testimonial);
-        return new TestimonialResource( $testimonial);  
+        // return new TestimonialResource( $testimonial); 
+        return   $testimonial->users;   
     }
   
-
 
     /**
      * Update the specified resource in storage.

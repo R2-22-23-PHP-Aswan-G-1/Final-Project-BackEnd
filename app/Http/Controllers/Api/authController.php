@@ -48,10 +48,9 @@ class authController extends Controller
             ]);
         }
         if($user->role->name == "instructor"){
-            return new instructorResource(User::findOrFail($user->id));
-
+            return new instructorResource($user->instructor);
         }else{
-            return new userResource(User::findOrFail($user->id));
+            return new userResource($user);
         }
     }
 
