@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Http\Resources\SkillResource;
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Skill;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class SkillController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        $skills= Skill ::all();
-        return $skills;
-       
+         $skills= Skill ::all();
+        return SkillResource::collection($skills);
     }
 
     /**
@@ -27,13 +27,16 @@ class SkillController extends Controller
              rules:   [
                     'name'=>['required']
              ],
-            params:[
-                'name.required'=>['skill is required']
-            ]
+           
             );
 
         $data=$request->all();
-        Skill::create($data);        
+       
+        $name=$data['name'];
+        Skill::create([
+            'name'=>$name
+        ]); 
+        return ['message'=>"success"];       
 
     }
 
@@ -43,6 +46,7 @@ class SkillController extends Controller
     public function show( $skill)
     {
         $skill= Skill ::find($skill);
+        return new SkillResource($skill);
 
 
         
@@ -51,12 +55,12 @@ class SkillController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request ,$id)
     {
-       Skill::find($request->id)->update([
+       Skill::find($id)->update([
             'name' => $request->name
         ]);
-
+        return ['message'=>"updated"];
 
     }
 
@@ -66,8 +70,23 @@ class SkillController extends Controller
     public function destroy( $skill)
     {
         Skill::destroy($skill);
+        return ['message'=>"deleted"];
+    
     
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

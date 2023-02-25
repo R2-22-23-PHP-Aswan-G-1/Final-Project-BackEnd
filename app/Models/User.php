@@ -48,4 +48,13 @@ class User extends Authenticatable
     {
         return $this->hasOne(Instructor::class);
     }
+
+
+
+    public function testimonials()
+    {
+        return $this->hasMany(Testimonial::class);
+    }
+
+
 }

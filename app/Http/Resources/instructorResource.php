@@ -15,11 +15,13 @@ class instructorResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'rate' => $this->instructor->rate,
-            'email' => $this->email,
-            'role' => $this->role->name,
-            'token'=> $this->createToken($this->email)->plainTextToken,
+            // 'id' => $this->id,
+            // 'name' => $this->name,
+            // 'rate' => $this->instructor->rate,
+            // 'email' => $this->email,
+            // 'role' => $this->role->name,
+            // 'token'=> $this->createToken($this->email)->plainTextToken,
+            'skills'=> SkillResource::collection($this->skills),
+
         ];    }
 }

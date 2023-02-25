@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\Role;
-
+use App\Http\Controllers\Api\SkillController;
+use App\Http\Controllers\Api\TestimonialController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -21,3 +22,20 @@ Route::post('/register' , ['App\Http\Controllers\Api\authController','register']
 Route::middleware('auth:sanctum')->group(function () {
     // return $request->user();
 });
+
+
+
+
+
+//skills
+Route::get('/skills',[ SkillController::class,'index']);
+Route::post('/skills',[SkillController::class, 'store']);
+Route::get('/skills/{id}',[SkillController::class,'show']);
+Route::delete('/skills/{id}',[SkillController::class,'destroy']);
+Route::post('/skills/{id}',[SkillController::class,'update']);
+//testimonials
+Route::get('/testimonials',[ TestimonialController::class,'index']);
+Route::post('/testimonials',[TestimonialController::class, 'store']);
+Route::get('/testimonials/{id}',[TestimonialController::class,'show']);
+Route::delete('/testimonials/{id}',[TestimonialController::class,'destroy']);
+Route::post('/testimonials/{id}',[TestimonialController::class,'update']);

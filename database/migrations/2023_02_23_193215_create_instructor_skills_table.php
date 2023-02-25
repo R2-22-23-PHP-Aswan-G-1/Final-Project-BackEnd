@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('instructor_skills', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('instructor_id')->nullable();
-            $table->unsignedBigInteger('skill_id')->nullable();
+            $table->unsignedBigInteger('instructor_id');
+            $table->unsignedBigInteger('skill_id');
             $table->timestamps();
-            $table->foreign('instructor_id')->references('id')->on('instructors');
-            $table->foreign('skill_id')->references('id')->on('skills');
+            $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('skill_id')->references('id')->on('skills')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

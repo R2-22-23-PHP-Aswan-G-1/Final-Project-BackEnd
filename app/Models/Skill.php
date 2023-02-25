@@ -13,4 +13,14 @@ class Skill extends Model
     protected $fillable = [
         'name',
     ];
+
+
+
+
+    function instructors(){
+        return $this->belongsToMany(Instructor::class,'instructor_skills');
+    }
+
+
+
 }

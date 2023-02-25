@@ -25,7 +25,7 @@ class StoreUserRequest extends FormRequest
             'name' => ['required'],
             'email' => ['required','unique:App\Models\User,email'],
             'password' => ['required', 'min:8','confirmed'],
-            // 'c_password' => ['required|same:password']
+             'c_password' => ['required|same:password']
         ];
     }
     public function messages()

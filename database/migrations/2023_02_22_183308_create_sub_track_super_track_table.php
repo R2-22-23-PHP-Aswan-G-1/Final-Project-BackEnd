@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('track_id');
             $table->unsignedBigInteger('subtrack_id');
-            $table->foreign('track_id')->references('id')->on('tracks');
-            $table->foreign('subtrack_id')->references('id')->on('sub_track');
+            $table->foreign('track_id')->references('id')->on('tracks')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('subtrack_id')->references('id')->on('sub_track')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
