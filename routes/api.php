@@ -30,3 +30,11 @@ Route::get('/services' , [QuestionController::class ,'index'])->name('services.i
 Route::post('/services' , [QuestionController::class ,'store'])->name('services.store');
 Route::delete('/services/{service}' , [QuestionController::class ,'destroy'])->name('services.destroy');
 Route::put('/services/{service}' , [QuestionController::class ,'update'])->name('services.update');
+Route::get('/orders' , [QuestionController::class ,'index'])->name('orders.index');
+Route::post('/orders' , [QuestionController::class ,'store'])->name('orders.store');
+Route::delete('/orders/{order}' , [QuestionController::class ,'destroy'])->name('orders.destroy');
+Route::put('/orders/{order}' , [QuestionController::class ,'update'])->name('orders.update');
+Route::get('/Likes' , [QuestionController::class ,'index'])->name('orders.index');
+Route::post('/Likes' , [QuestionController::class ,'store'])->name('orders.store');
+Route::delete('/Likes/{Like}' , [QuestionController::class ,'destroy'])->name('Like.destroy');
+Route::put('/Likes/{Like}' , [QuestionController::class ,'update'])->name('Like.update');
