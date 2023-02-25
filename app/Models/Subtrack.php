@@ -11,6 +11,7 @@ class Subtrack extends Model
     protected $fillable = [
         'name',
     ];
+    
     public function superTrack(){
         return $this->belongsToMany(Supertrack::class,'supertrack_subtracks');
     }

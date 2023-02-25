@@ -22,16 +22,19 @@ class subtrackController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'name'=>['required']
+        ]);
         Subtrack::create([
             'name'=>$request->name,
         ]);
         return response(['message'=>'success']);
     }
     
-    // public function show(Sub_track $sub_track)
-    // {
-    //     //
-    // }
+    public function show(Subtrack $subtrack)
+    {
+        return new SubtrackResource($subtrack);
+    }
 
     // public function update(Request $request, Sub_track $sub_track)
     // {

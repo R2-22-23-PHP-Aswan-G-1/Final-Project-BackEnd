@@ -16,10 +16,13 @@ class instructorResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'rate' => $this->instructor->rate,
-            'email' => $this->email,
-            'role' => $this->role->name,
-            'token'=> $this->createToken($this->email)->plainTextToken,
+            'name' => $this->user->name,
+            'rate' => $this->rate,
+            'email' => $this->user->email,
+            'role' => $this->user->role->name,
+            'certificates'=>$this->certificates,
+            'posts'=>$this->posts,
+            // 'skills'=>$this->skills,
+            'token'=> $this->user->createToken($this->user->email)->plainTextToken,
         ];    }
 }

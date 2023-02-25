@@ -11,7 +11,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/allTracks' , ['App\Http\Controllers\Api\trackController','index'])->name('tracks');
-Route::post('/storeTrack' , ['App\Http\Controllers\Api\trackController','store'])->name('storeTracks');
+//Super Track
+Route::get('/allTracks' , ['App\Http\Controllers\Api\supertrackController','index'])->name('tracks');
+Route::post('/storeTrack' , ['App\Http\Controllers\Api\supertrackController','store'])->name('storeTracks');
+Route::get('/superTrack/{supertrack}' , ['App\Http\Controllers\Api\supertrackController','show'])->name('superTrack.show');
+
+
+//Sub Track
 Route::post('/storeSubTrack' , ['App\Http\Controllers\Api\subtrackController','store'])->name('storeTracks');
 Route::get('/allSubTracks' , ['App\Http\Controllers\Api\subtrackController','index'])->name('subTracks');
+Route::get('/subTrack/{subtrack}' , ['App\Http\Controllers\Api\subtrackController','show'])->name('subTrack.show');

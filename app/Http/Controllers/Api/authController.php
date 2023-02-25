@@ -43,15 +43,14 @@ class authController extends Controller
         ]);
         $user = User::where('email', $request->email)->first();
         if (! $user || ! Hash::check($request->password, $user->password)) {
-            // throw ValidationException::withMessages([
-            //     'email' => ['The provided credentials are incorrect.'],
-            // ]);
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
         }
         if($user->role->name == "instructor"){
-            return new instructorResource(User::findOrFail($user->id));
-
+            return new instructorResource($user->instructor);
         }else{
-            return new userResource(User::findOrFail($user->id));
+            return new userResource($user);
         }
     }
 
