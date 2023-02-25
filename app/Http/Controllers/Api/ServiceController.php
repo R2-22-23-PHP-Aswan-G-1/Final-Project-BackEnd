@@ -15,7 +15,8 @@ class ServiceController extends Controller
 
     public function store(Request $request){
         
-        $name = $request['name'] ; 
+        $service = $request->all() ; 
+        $name = $service['name'];
 
         Service::create([
 
@@ -31,6 +32,7 @@ class ServiceController extends Controller
 
     public function update(Request $request ,$id){
         $serviceup = Service::findOrFail($id) ;
+        $service = $request->all() ; 
         $name = $service['name'];
         $service->update([
             'name'=>$name
