@@ -21,10 +21,10 @@ class TestimonialResource extends JsonResource
              'rate'=> $this->rate,
              'user_id'=>$this->user_id,
              'instructor_id'=>$this->instructor_id,
-             'instructor'=>  InstructorResource::collection($this->instructors)  ,
-               'user'=>  UserResource::collection($this->users)    
-              
-            // 'user'=>  $this->user
+            //  'instructor'=>  InstructorResource::collection($this->instructors)  ,
+            //  'user'=>  UserResource::collection($this->users) 
+           'instructor'=>$this->instructors,
+            'user'=>  $this->users
         ];;
     }
 }

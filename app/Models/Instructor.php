@@ -17,10 +17,6 @@ class Instructor extends Model
         return $this->belongsTo(User::class);
     }
 
-
-
-
-
     function skills(){
         return $this->belongsToMany(Skill::class,'instructor_skills');
     }

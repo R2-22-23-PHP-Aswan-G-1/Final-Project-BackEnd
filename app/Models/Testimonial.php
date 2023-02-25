@@ -17,11 +17,11 @@ class Testimonial extends Model
     ];
 
     function instructors(){
-        return $this->belongsTo(Instructor::class);
+        return $this->belongsTo(Instructor::class,'instructor_id');
     }
 
     function users(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
 
