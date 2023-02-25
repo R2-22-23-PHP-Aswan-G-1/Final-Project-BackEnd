@@ -5,20 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Instructor extends Model
+class Service extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'rate',
-        'user_id',
-    ];
 
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
+    protected $fillable = [
+        'name',
+   
+    ];
 
     public function order(){
         
         return $this->hasMany(Order::class);
     }
 }
+

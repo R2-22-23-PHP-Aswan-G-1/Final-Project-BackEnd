@@ -22,4 +22,11 @@ Route::post('/register' , ['App\Http\Controllers\Api\authController','register']
 Route::middleware('auth:sanctum')->group(function () {
     // return $request->user();
 });
-Route::get('/home' , [QuestionController::class ,'index'])->name('home');
+Route::get('/questions' , [QuestionController::class ,'index'])->name('questions.index');
+Route::post('/questions' , [QuestionController::class ,'store'])->name('questions.store');
+Route::delete('/questions/{question}' , [QuestionController::class ,'destroy'])->name('questions.destroy');
+Route::put('/questions/{question}' , [QuestionController::class ,'update'])->name('questions.update');
+Route::get('/services' , [QuestionController::class ,'index'])->name('services.index');
+Route::post('/services' , [QuestionController::class ,'store'])->name('services.store');
+Route::delete('/services/{service}' , [QuestionController::class ,'destroy'])->name('services.destroy');
+Route::put('/services/{service}' , [QuestionController::class ,'update'])->name('services.update');

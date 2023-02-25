@@ -57,4 +57,9 @@ class User extends Authenticatable
     public function like(){
         $this->hasMany(like::class);
     }
+
+    public function order(){
+        
+        return $this->hasMany(Order::class);
+    }
 }
