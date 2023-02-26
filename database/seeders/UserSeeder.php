@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $emails = ['m@e.com', 'z@e.com', 'm@f.com', 't@a.com'];
-        $roles = [2 , 2 , 1 , 3];
+        $roles = [2 , 1 , 3 , 3];
         $names = ['Mohamed Emad', 'Zinab Ebaid', 'Mostafa Fahmy', 'Tasneem Ahmed'];
         for ($i=0; $i < count($emails); $i++) {
             $user = User::create([
