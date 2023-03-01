@@ -13,7 +13,8 @@ class QuestionController extends Controller
     public function index(){
         $questions = Question::all();
         foreach($questions as $question){
-            $question['user'] = $question['user']->user ;
+            $question->user ;
+            $question->subtrack;
         }
         return $questions;
     }
