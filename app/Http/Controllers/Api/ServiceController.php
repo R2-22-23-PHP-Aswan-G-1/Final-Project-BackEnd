@@ -14,6 +14,7 @@ class ServiceController extends Controller
         return $service ;
     }
 
+
     public function store(Request $request){
         
         $service = $request->all() ; 

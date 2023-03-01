@@ -39,6 +39,7 @@ Route::delete('/services/{service}' , [ServiceController::class ,'destroy'])->na
 Route::put('/services/{service}' , [ServiceController::class ,'update'])->name('services.update');
 //orders
 Route::get('/orders' , [OrderController::class ,'index'])->name('orders.index');
+Route::get('/orders/{user_id}/{role}', [OrderController::class ,'show'])->name('orders.show');
 Route::post('/orders' , [OrderController::class ,'store'])->name('orders.store');
 Route::delete('/orders/{order}' , [OrderController::class ,'destroy'])->name('orders.destroy');
 Route::put('/orders/{order}' , [OrderController::class ,'update'])->name('orders.update');
