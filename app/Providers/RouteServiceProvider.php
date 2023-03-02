@@ -20,6 +20,12 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/api/instructor.php'))
+                ->group(base_path('routes/api/like.php'))
+                ->group(base_path('routes/api/order.php'))
+                ->group(base_path('routes/api/question.php'))
+                ->group(base_path('routes/api/reply.php'))
+                ->group(base_path('routes/api/subtrack.php'))
+                ->group(base_path('routes/api/user.php'))
                 ->group(base_path('routes/api/student.php'))
                 ->group(base_path('routes/api/services.php'))
 
@@ -43,3 +49,4 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 }
+

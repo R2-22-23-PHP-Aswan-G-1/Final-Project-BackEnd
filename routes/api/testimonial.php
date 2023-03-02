@@ -1,6 +1,7 @@
 
-
 <?php
+
+
 
 use App\Http\Resources\userResource;
 use Illuminate\Http\Request;

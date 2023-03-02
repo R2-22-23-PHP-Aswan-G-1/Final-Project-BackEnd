@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Resources\userResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,5 @@ Route::get('/instructor/{id}' , function (Request $request) {
     return $user->user;
 });
 
+// >>>>>>> 0f376e4a62995842a6558ce702a968bb10b7e6b7
+?>

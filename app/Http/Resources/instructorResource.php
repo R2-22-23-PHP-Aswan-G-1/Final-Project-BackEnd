@@ -23,7 +23,7 @@ class instructorResource extends JsonResource
             'role' => $this->user->role->name,
             'certificates'=>$this->certificates,
             'posts'=>$this->posts,
-            // 'skills'=>$this->skills,
+            'skills'=>$this->skills,
             'token'=> $this->user->createToken($this->user->email)->plainTextToken,
 
         ];    }
