@@ -16,6 +16,9 @@ class Subtrack extends Model
         return $this->belongsToMany(Supertrack::class,'supertrack_subtracks');
     }
     public function question(){
-        return $this->belongsToMany(Question::class);
+        return $this->hasMany(Question::class);
+    }
+    public function order(){
+        return $this->hasMany(Order::class);
     }
 }

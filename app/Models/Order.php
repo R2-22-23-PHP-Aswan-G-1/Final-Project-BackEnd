@@ -46,4 +46,9 @@ class Order extends Model
         return $this->belongsTo(Service::class);
 
     }
+    public function subtrack(){
+
+        return $this->belongsTo(Subtrack::class);
+
+    }
 }

@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
+    
     public function run(): void
     {
-
+       
         $emails = ['m@e.com', 'z@e.com', 'm@f.com', 't@a.com'];
         $roles = [2 , 2 , 2 , 2];
         $names = ['Mohamed Emad', 'Zinab Ebaid', 'Mostafa Fahmy', 'Tasneem Ahmed'];

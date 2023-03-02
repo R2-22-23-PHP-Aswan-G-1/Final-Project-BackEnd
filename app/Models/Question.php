@@ -11,9 +11,13 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = [
-        'body',
-        'created_at',
-        'user_id',
+    
+        
+        
+        'question_body',
+            'user_id',
+            'subtrack_id',
+            
     ];
 
     public function user(){
@@ -21,6 +25,12 @@ class Question extends Model
     }
 
     public function subtrack(){
-        return $this->belongsToMany(Subtrack::class);
+        return $this->belongsTo(Subtrack::class);
     }
+
+  
+   
+  
+   
+  
 }
