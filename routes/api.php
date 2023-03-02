@@ -34,8 +34,4 @@ Route::get('/skills/{id}',[SkillController::class,'show']);
 Route::delete('/skills/{id}',[SkillController::class,'destroy']);
 Route::post('/skills/{id}',[SkillController::class,'update']);
 //testimonials
-Route::get('/testimonials',[ TestimonialController::class,'index']);
-Route::post('/testimonials',[TestimonialController::class, 'store']);
-Route::get('/testimonials/{id}',[TestimonialController::class,'show']);
-Route::delete('/testimonials/{id}',[TestimonialController::class,'destroy']);
-Route::post('/testimonials/{id}',[TestimonialController::class,'update']);
+// Route~st('/testimonials/{id}',[TestimonialController::class,'update']);

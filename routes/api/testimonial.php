@@ -1,5 +1,3 @@
-
-
 <?php
 
 use App\Http\Resources\userResource;
@@ -9,10 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Api\TestimonialController;
 
-
-
-
 //testimonials
+
 Route::get('/testimonials',[ TestimonialController::class,'index']);
 Route::post('/testimonials',[TestimonialController::class, 'store']);
 Route::get('/testimonials/{id}',[TestimonialController::class,'show']);
