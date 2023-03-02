@@ -56,5 +56,16 @@ class User extends Authenticatable
         return $this->hasMany(Testimonial::class);
     }
 
-
+    public function question()
+    {
+        return $this->hasMany(Question::class);
+    }
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+    public function like()
+    {
+        return $this->hasMany(Like::class);
+    }
 }

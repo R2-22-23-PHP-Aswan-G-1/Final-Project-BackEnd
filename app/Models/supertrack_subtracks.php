@@ -12,4 +12,8 @@ class supertrack_subtracks extends Model
         'supertrack_id',
         'subtrack_id'
     ];
+
+    public function order() {
+        return $this->hasMany(Order::class);
+    }
 }
