@@ -20,6 +20,13 @@ class subtrackController extends Controller
         return SubtrackResource::collection(Subtrack::all());
     }
 
+    public function getSubtrackQuestions($subtrack_id){
+
+    
+    $subtrack = Subtrack::find($subtrack_id);
+    return $subtrack->question;
+}
+
     public function store(Request $request)
     {
         $request->validate([

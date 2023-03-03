@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->decimal('price',8, 2);
-            $table->string('attachement');
-            $table->smallInteger('evaluation');
-            $table->text('vedio_link');
+            $table->string('attachement')->nullable();
+            $table->smallInteger('evaluation')->nullable();
+            $table->text('vedio_link')->nullable();
             $table->date('appointment');
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->foreignId('instructor_id')->constrained('instructors')->onDelete('cascade');

@@ -14,7 +14,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/instructorSkill',[InstructorController::class,'storeSkills']);
-Route::get('/instructor/{instructor}',[InstructorController::class,'show'])->middleware('auth:sanctum');;
+Route::get('/instructor/{instructor}',[InstructorController::class,'show']);
 Route::post('/storeCertificate' , [certificateController::class,'store'])->middleware('auth:sanctum');
 // Route::post('/storePost' , [InstructorController::class,'store'])->middleware('auth:sanctum');
-
+Route::get('/instructor/{id}' , function (Request $request) {
+    $user = Instructor::where('user_id' , $request->id)->first();
+    return $user->user;
+});

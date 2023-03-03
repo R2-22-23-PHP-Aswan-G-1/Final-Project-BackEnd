@@ -4,6 +4,7 @@ namespace App\Http\Controllers\api;
 use App\Models\Question;
 use App\Models\User;
 use App\Http\Requests\StoreQuestionRequest;
+use App\Http\Resources\QuestionResource;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // use Route;
@@ -12,43 +13,41 @@ class QuestionController extends Controller
 {
     public function index(){
         $questions = Question::all();
-        foreach($questions as $question){
-            $question->user ;
-            $question->subtrack;
+        return QuestionResource::collection($questions);
         }
-        return $questions;
+        
+   
+    public function show($question_id){
+        $question =  Question::find($question_id);
+        return new QuestionResource($question);
     }
-
-    public function show($user_id){
-
-        $user_question = Question::select('*')->where('user_id',$user_id)->get();
-        foreach($user_question as $question){
-            $question['user'] = $question['user']->user ;
-        }
-        return $user_question;
-    }
-
+  
     public function store(Request $request){
         $question = $request->all();
-        $body = $question['body'];
+        $question_body = $question['question_body'];
         $user_id = $question['user_id'];
+        $subtrack_id = $question['subtrack_id'];
+       
         Question::create([
-            'body'=>$body,
+            'question_body'=>$question_body,
             'user_id'=>$user_id,
+            'subtrack_id'=>$subtrack_id,
+
         ]);
         return "done";
+
     }
 
-    public function update(Request $request , $question){
-        $questionup=Question::findOrFail($question);
-        $question = $request->all();
-        $body = $question['body'];
-        $user_id = $question['user_id'];
-        $questionup->update([
-            
-            'body'=>$body, 
+    public function update(Request $request, $id )
+    {
+
+        $question= Question::where('id',$id)->update([
+            'question_body' => $request['question_body'],
+            // 'subtrack_id' => $request['subtrack_id'],
         ]);
-       return $this->index();
+
+// return  ['message','updated'];
+return $this->index();
     }
 
     public function destroy($Id){
@@ -56,6 +55,4 @@ class QuestionController extends Controller
         Question::find($Id)->delete();
         return $this->index();
     }
-
-
 }

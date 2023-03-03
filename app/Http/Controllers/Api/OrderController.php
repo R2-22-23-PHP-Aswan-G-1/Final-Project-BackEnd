@@ -3,35 +3,26 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\OrderResource;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\User;
+use App\Models\Instructor;
+use App\Models\Service;
 
 class OrderController extends Controller
 {
    public function index(){
-
     $orders = Order::all();
-    foreach($orders as $order){
-       $order->user ;
-       $order->track;
-       $order->service ;
-       $order->instructor->user ;
-    }
-    return $orders ;
-   }
+    return OrderResource::collection($orders);
 
-   public function show($user_id,$role){
-    $checkuser = "user_id";
-    if($role =='instructor'){$checkuser ="instructor_id" ; }
-    $user_orders = Order::select('*')->where($checkuser,$user_id)->get();
-    foreach($user_orders as $order){
-        $order->user ;
-        $order->track;
-        $order->service ;
-        $order->instructor->user;
-    }
-    return $user_orders;
+   }
+   public function show($order_id){
+    $order =  Order::find($order_id);
+    return new OrderResource($order);
 }
+
+
 
    public function store(Request $request){
     $order = $request->all();
@@ -63,8 +54,8 @@ class OrderController extends Controller
 
    }
 
-   public function destory($id){
-    Order::find($id)->delete();
+   public function destory($order_id){
+    Order::find($order_id)->delete();
      return $this->index(); ;
 
    }

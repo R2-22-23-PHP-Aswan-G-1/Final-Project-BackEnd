@@ -12,11 +12,14 @@ class QuestionSeeder extends Seeder
      */
     public function run(): void
     {
-        $bodes = ['Question 1', 'Question 2', 'Question 3'];
-        for ($i=0; $i < count($bodes); $i++) {
+        $questions = ['Question 1', 'Question 2', 'Question 3'];
+        // $id= [1 , 2 ];
+        for ($i=0; $i < count($questions); $i++) {
                  Question::create([
-                'body' => $bodes[$i],
+                'question_body' => $questions[$i],
                 'user_id' => 1 ,
+                'subtrack_id' => 1
+
             ]);
         }
     }
