@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Resources\instructorResource;
+use App\Http\Resources\LoginResource;
 use App\Http\Resources\userResource;
 use App\Models\User;
 use Dotenv\Exception\ValidationException;
@@ -48,7 +49,7 @@ class authController extends Controller
         if($user->role->name == "instructor"){
             return new instructorResource($user->instructor);
         }else{
-            return new userResource($user);
+            return (['message'=>'success' ,'data'=>new LoginResource($user)]);
         }
     }
 

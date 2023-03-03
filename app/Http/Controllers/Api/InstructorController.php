@@ -53,28 +53,19 @@ class InstructorController extends Controller
      */
     public function show(Instructor $instructor)
     {
-       return    new instructorResource($instructor) ;
+       return (['message'=> 'success' , 'data'=> new instructorResource($instructor) ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Instructor $instructor)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Instructor $instructor)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Instructor $instructor)
     {
         //
