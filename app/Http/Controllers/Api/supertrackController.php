@@ -31,15 +31,16 @@ class supertrackController extends Controller
     {
         return new SuperTrackResource($supertrack);
     }
+    public function update(StoreTrackRequest $request, Supertrack $superTrack)
+    {
+        $subTracksIds = $request->subTrackIds;
+        $superTrack->subTrack()->attach($subTracksIds);
+        return response(['message' => 'success']);
+    }
 
-
-    // public function update(Request $request, Track $track)
-    // {
-    //     //
-    // }
-
-    // public function destroy(Track $track)
-    // {
-    //     //
-    // }
+    public function destroy(Supertrack $supertrack)
+    {
+        Supertrack::destroy($supertrack);
+        return (['message'=>'success']);
+    }
 }

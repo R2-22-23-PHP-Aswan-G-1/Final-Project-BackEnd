@@ -21,7 +21,6 @@ class LoginResource extends JsonResource
             'email' => $this->email,
             'role_id'=>$this->role->id,
             'role' => $this->role->name,
-            'token'=> $this->createToken($this->email)->plainTextToken,
         ];  
       }
 }

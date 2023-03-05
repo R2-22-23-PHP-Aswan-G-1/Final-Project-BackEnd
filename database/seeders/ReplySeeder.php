@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Reply;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -19,8 +20,7 @@ class ReplySeeder extends Seeder
                  Reply::create([
                 'reply_body' => $replies[$i],
                 'user_id' => 5 ,
-                'question_id' => 2
-
+                'qcomment_id'=>1
                  ]);
     }
     }}

@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Language extends Model
+class Education extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
-        'name',
+        'faculty','department','instructor_id'
     ];
 
-    public function instructors(){
-        return $this->belongsToMany(Instructor::class,'instructor_languages');
+    public function instructor(){
+        return $this->belongsTo(Instructor::class,);
     }
+    
 }

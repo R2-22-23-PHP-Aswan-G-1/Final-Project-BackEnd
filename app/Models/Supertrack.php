@@ -11,7 +11,10 @@ class Supertrack extends Model
     protected $fillable = [
         'name',
     ];
-    
+
+    public function instructors(){
+        return $this->belongsToMany(Instructor::class);
+    }
     public function subTrack(){
         return $this->belongsToMany(Subtrack::class,'supertrack_subtracks');
     }

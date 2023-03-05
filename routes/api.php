@@ -8,6 +8,7 @@ use Illuminate\Validation\ValidationException;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\Role;
 use App\Http\Controllers\Api\SkillController;
+use App\Http\Controllers\Api\authController;
 use App\Http\Controllers\Api\TestimonialController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\ServiceController;
@@ -21,13 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login' , ['App\Http\Controllers\Api\authController','login'])->name('login');
-Route::post('/register' , ['App\Http\Controllers\Api\authController','register'])->name('register');
-
-Route::middleware('auth:sanctum')->group(function () {
-    // return $request->user();
-});
-
 //skills
 Route::get('/skills',[ SkillController::class,'index']);
 Route::post('/skills',[SkillController::class, 'store']);
@@ -35,17 +29,11 @@ Route::get('/skills/{id}',[SkillController::class,'show']);
 Route::delete('/skills/{id}',[SkillController::class,'destroy']);
 Route::post('/skills/{id}',[SkillController::class,'update']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 //forms routes
 Route::post('/login' , ['App\Http\Controllers\Api\authController','login'])->name('login');
 Route::post('/register' , ['App\Http\Controllers\Api\authController','register'])->name('register');
-
 Route::get('/user/profile' , ['App\Http\Controllers\Api\UserController','show'])->middleware('auth:sanctum');
-Route::middleware('auth:sanctum')->group(function () {
-    // return $request->user();
-});
+
 //////////////////////////////////////////////////////routes for user, question , subtrack questions////////////////////
 
 //user routes
@@ -77,34 +65,13 @@ Route::post('/replies/update/{reply_id}' , [ReplyController::class ,'update'])->
 Route::delete('/replies/delete/{reply_id}' , [ReplyController::class ,'destroy'])->name('replies.delete');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//services
-Route::get('/services' , [ServiceController::class ,'index'])->name('services.index');
-Route::post('/services/store' , [ServiceController::class ,'store'])->name('services.store');
-Route::delete('/services/delete/{service}' , [ServiceController::class ,'destroy'])->name('services.destroy');
-Route::put('/services/update/{service}' , [ServiceController::class ,'update'])->name('services.update');
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//orders
-Route::get('/orders' , [OrderController::class ,'index'])->name('orders.index');
-// Route::get('/orders/show/{user_id}/{role}', [OrderController::class ,'show'])->name('orders.show');
-Route::get('/orders/show/{order_id}' , [OrderController::class ,'show'])->name('orders.show');
-Route::post('/orders/store' , [OrderController::class ,'store'])->name('orders.store');
-Route::delete('/orders/delete/{order}' , [OrderController::class ,'destroy'])->name('orders.destroy');
-Route::put('/orders/update/{order}' , [OrderController::class ,'update'])->name('orders.update');
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//likes
-Route::get('/likes' , [LikeController::class ,'index'])->name('likes.index');
-Route::post('/likes/store' , [LikeController::class ,'store'])->name('likes.store');
-Route::delete('/likes/destroy/{like}' , [LikeController::class ,'destroy'])->name('likes.destroy');
-Route::put('/likes/update/{like}' , [LikeController::class ,'update'])->name('likes.update');
-//skills
-Route::get('/skills',[ SkillController::class,'index']);
-Route::post('/skills',[SkillController::class, 'store']);
-Route::get('/skills/{id}',[SkillController::class,'show']);
-Route::delete('/skills/{id}',[SkillController::class,'destroy']);
-Route::post('/skills/{id}',[SkillController::class,'update']);
 //testimonials
 Route::get('/testimonials',[ TestimonialController::class,'index']);
 Route::post('/testimonials',[TestimonialController::class, 'store']);
 Route::get('/testimonials/{id}',[TestimonialController::class,'show']);
 Route::delete('/testimonials/{id}',[TestimonialController::class,'destroy']);
 Route::post('/testimonials/{id}',[TestimonialController::class,'update']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/logout', [authController::class, 'logout']);
+});

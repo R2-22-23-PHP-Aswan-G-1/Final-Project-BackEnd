@@ -39,4 +39,5 @@ class PostController extends Controller
     {
         Post::destroy($post);
     }
+    
 }

@@ -9,5 +9,4 @@ use App\Http\Controllers\Api\SubtrackController;
 
 
 //subtrack questions route 
-Route::get('/subtrack/getSubtrackQuestions/{subtrack_id}', [subtrackController::class ,'getSubtrackQuestions']);
 ?>

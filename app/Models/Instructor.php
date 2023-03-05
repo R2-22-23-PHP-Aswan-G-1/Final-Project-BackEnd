@@ -11,14 +11,18 @@ class Instructor extends Model
     protected $fillable = [
         'rate',
         'user_id',
+        'major',
+        'supertrack_id',
     ];
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    function skills(){
-        return $this->belongsToMany(Skill::class,'instructor_skills');
+    function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'instructor_skills');
     }
 
     public function testimonials()
@@ -26,16 +30,55 @@ class Instructor extends Model
         return $this->hasMany(Testimonial::class);
     }
 
+    public function superTrack()
+    {
+        return $this->belongsTo(Supertrack::class, 'supertrack_id');
+    }
 
-    public function posts() {
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 
-    public function certificates(){
+    public function certificates()
+    {
         return $this->hasOne(Certificate::class);
     }
 
-    public function order() {
+    public function order()
+    {
         return $this->hasMany(Order::class);
     }
+    public function languages()
+    {
+        return $this->belongsToMany(Language::class, 'instructor_languages');
+    }
+
+    public function education()
+    {
+        return $this->hasMany(Education::class,);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
