@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCertificateRequest extends FormRequest
+class UpdatePostReplayRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,15 +22,7 @@ class StoreCertificateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'certificate'=>['required' ,'file']
+            //
         ];
-    }
-    public function messages()
-    {
-        return
-            [
-                'certificate.required' => 'The Certificate Field Is Required',
-                'certificate.file' => 'The Certificate Must be file',
-            ];
     }
 }

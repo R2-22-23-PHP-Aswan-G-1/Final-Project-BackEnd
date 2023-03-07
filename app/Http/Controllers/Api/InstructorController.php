@@ -6,6 +6,8 @@ use App\Models\Instructor;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\instructorResource;
 use App\Models\Education;
+use App\Models\Supertrack;
+use App\Models\WorkHistory;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -13,20 +15,19 @@ use Illuminate\Support\Facades\Auth;
 
 class InstructorController extends Controller
 {
-
-    public function storeInstructorEducation(Request $request){
-        
+    public function storeInstructorEducation(Request $request)
+    {
         $request->validate([
-            'faculty'=>'required',
-            'department'=>'required',
+            'faculty' => 'required',
+            'department' => 'required',
         ]);
         $instructor_id = Auth::user()->instructor->id;
         Education::create([
-            'faculty'=> $request->faculty,
+            'faculty' => $request->faculty,
             'department' => $request->department,
-            'instructor_id'=>$instructor_id,
+            'instructor_id' => $instructor_id,
         ]);
-        return (['message'=>'success']);
+        return (['message' => 'success']);
     }
     public function topTenInstructors()
     {
@@ -64,15 +65,28 @@ class InstructorController extends Controller
     }
     public function storeSuperTrack(Request $request)
     {
+        $superTrack = Supertrack::where('id', $request->superTrack_id)->first();
         $request->validate([
             'superTrack_id' => ['required', 'exists:App\Models\Supertrack,id'],
         ]);
         $instructor_id = Auth::user()->instructor->id;
         $instructor = Instructor::find($instructor_id);
-        $instructor-> supertrack_id = $request->superTrack_id;
-        $instructor-> major = $request->superTrack_id;
-        if($instructor->save()){
-            return (['message'=>'success']);
+        $instructor->supertrack_id = $request->superTrack_id;
+        $instructor->major = $superTrack->name;
+        if ($instructor->save()) {
+            return (['message' => 'success']);
         }
+    }
+    public function storeInstructorWorkHistory(Request $request)
+    {
+        $request->validate([
+            'company' => ['required']
+        ]);
+        $instructor_id = Auth::user()->instructor->id;
+        WorkHistory::create([
+            'company' => $request->company,
+            'instructor_id' =>  $instructor_id,
+        ]);
+        return (['message' => 'success']);
     }
 }

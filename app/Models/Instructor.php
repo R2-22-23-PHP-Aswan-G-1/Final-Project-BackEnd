@@ -32,7 +32,7 @@ class Instructor extends Model
 
     public function superTrack()
     {
-        return $this->belongsTo(Supertrack::class, 'supertrack_id');
+        return $this->belongsTo(Supertrack::class,'supertrack_id');
     }
 
     public function posts()
@@ -57,6 +57,10 @@ class Instructor extends Model
     public function education()
     {
         return $this->hasMany(Education::class,);
+    }
+    public function workHistory()
+    {
+        return $this->hasMany(WorkHistory::class,);
     }
 }
 

@@ -36,21 +36,11 @@ class SkillController extends Controller
         Skill::create($data);        
 
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show( $skill)
     {
-        $skill= Skill ::find($skill);
-
-
-        
+        $skill= Skill ::find($skill);     
     }
   
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request)
     {
        Skill::find($request->id)->update([

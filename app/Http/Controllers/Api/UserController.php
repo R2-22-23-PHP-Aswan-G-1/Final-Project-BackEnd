@@ -36,6 +36,7 @@ class UserController extends Controller
         $user = User::find($user_id);
         return $user->reply;
     }
+    
    //get user orders
    public function getUserOrders($user_id){
     

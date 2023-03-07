@@ -22,13 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//skills
-Route::get('/skills',[ SkillController::class,'index']);
-Route::post('/skills',[SkillController::class, 'store']);
-Route::get('/skills/{id}',[SkillController::class,'show']);
-Route::delete('/skills/{id}',[SkillController::class,'destroy']);
-Route::post('/skills/{id}',[SkillController::class,'update']);
-
 //forms routes
 Route::post('/login' , ['App\Http\Controllers\Api\authController','login'])->name('login');
 Route::post('/register' , ['App\Http\Controllers\Api\authController','register'])->name('register');

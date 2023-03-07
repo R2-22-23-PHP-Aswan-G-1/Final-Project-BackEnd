@@ -15,12 +15,14 @@ use App\Http\Controllers\Api\profileController;
 //Instructor Profile
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/getInstructorPosts', [profileController::class, 'getInstructorPosts']);
-    Route::get('/getInstructorCertificates', [profileController::class, 'getInstructorCertificates']);
-    Route::get('/getInstructorEducation', [profileController::class, 'getInstructorEducation']);
-    Route::get('/getInstructorTestemonials', [profileController::class, 'getInstructorTestemonials']);
-    Route::get('/getInstructorTrack', [profileController::class, 'getInstructorTrack']);
-    Route::get('/getInstructorSkiils', [profileController::class, 'getInstructorSkiils']);
-    Route::get('/getInstructorLanguages', [profileController::class, 'getInstructorLanguages']);
-    Route::get('/getInstructorEducation', [profileController::class, 'getInstructorEducation']);
 });
+Route::get('/getInstructorPosts/{user}', [profileController::class, 'getInstructorPosts']);
+Route::get('/getInstructorCertificates/{user}', [profileController::class, 'getInstructorCertificates']);
+Route::get('/getInstructorEducation/{user}', [profileController::class, 'getInstructorEducation']);
+Route::get('/getInstructorTestemonials/{user}', [profileController::class, 'getInstructorTestemonials']);
+Route::get('/getInstructorTrack/{user}', [profileController::class, 'getInstructorTrack']);
+Route::get('/getInstructorSkiils/{user}', [profileController::class, 'getInstructorSkiils']);
+Route::get('/getInstructorLanguages/{user}', [profileController::class, 'getInstructorLanguages']);
+Route::get('/getInstructorEducation/{user}', [profileController::class, 'getInstructorEducation']);
+Route::get('/getInstructorProfile/{user}', [profileController::class, 'getInstructorProfile']);
+Route::get('/getInstructorWorkHistory/{user}', [profileController::class, 'getInstructorWorkHistory']);

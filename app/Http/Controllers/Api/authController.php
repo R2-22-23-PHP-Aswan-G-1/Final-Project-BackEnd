@@ -33,7 +33,8 @@ class authController extends Controller
         ]);
         if($user){
             $user = User::where('id', $user->id)->first();
-            return new userResource(User::findOrFail($user->id));
+            return (['message'=>'success' ,'data'=>new LoginResource($user) ,'token'=> $user->createToken($user->email)->plainTextToken]);
+
         }
     }
     public function login(Request $request)

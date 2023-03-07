@@ -9,8 +9,6 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Controllers\Api\OrderController;
 use App\Models\Role;
 
-
-
 //orders
 Route::get('/orders' , [OrderController::class ,'index'])->name('orders.index');
 // Route::get('/orders/show/{user_id}/{role}', [OrderController::class ,'show'])->name('orders.show');

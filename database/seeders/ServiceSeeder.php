@@ -12,11 +12,10 @@ class ServiceSeeder extends Seeder
      */
     public function run(): void
     {
-        $names = ['interview', 'Help me ', 'other'];
+        $names = ['Make InterView', 'Explain To Me', 'Review My Code'];
         for ($i=0; $i < count($names); $i++) {
                  Service::create([
                 'name' => $names[$i],
-
             ]);
         }
     }

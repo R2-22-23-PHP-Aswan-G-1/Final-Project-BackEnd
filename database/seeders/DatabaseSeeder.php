@@ -20,15 +20,16 @@ class DatabaseSeeder extends Seeder
             TrackSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            SubtrackSeeder::class,
             InstructorSeeder::class,
+            SubtrackSeeder::class,
             PostSeeder::class,
+            PostReplaySeeder::class,
             LanguageSeeder::class,
             // LikeSeeder::class,
             // QuestionSeeder::class,
             // QcommentSeeder::class ,
             // ReplySeeder::class,
-            // ServiceSeeder::class,
+            ServiceSeeder::class,
             // OrderSeeder::class,
         ]);
 
