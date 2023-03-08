@@ -13,6 +13,7 @@ class Instructor extends Model
         'user_id',
         'major',
         'supertrack_id',
+        'workHistory',
     ];
 
     public function user()
@@ -32,7 +33,7 @@ class Instructor extends Model
 
     public function superTrack()
     {
-        return $this->belongsTo(Supertrack::class,'supertrack_id');
+        return $this->belongsTo(Supertrack::class, 'supertrack_id');
     }
 
     public function posts()
@@ -54,35 +55,13 @@ class Instructor extends Model
         return $this->belongsToMany(Language::class, 'instructor_languages');
     }
 
+    public function offers()
+    {
+        return $this->hasMany(Offer::class,);
+    }
+
     public function education()
     {
         return $this->hasMany(Education::class,);
     }
-    public function workHistory()
-    {
-        return $this->hasMany(WorkHistory::class,);
-    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

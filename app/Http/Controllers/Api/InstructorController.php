@@ -80,13 +80,12 @@ class InstructorController extends Controller
     public function storeInstructorWorkHistory(Request $request)
     {
         $request->validate([
-            'company' => ['required']
+            'workHistory' => ['required']
         ]);
-        $instructor_id = Auth::user()->instructor->id;
-        WorkHistory::create([
-            'company' => $request->company,
-            'instructor_id' =>  $instructor_id,
-        ]);
-        return (['message' => 'success']);
+        $instructor = Auth::user()->instructor;
+        $instructor->workHistory = $request->workHistory;
+        if ($instructor->save()) {
+            return (['message' => 'success']);
+        }
     }
 }

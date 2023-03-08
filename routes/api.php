@@ -58,13 +58,6 @@ Route::post('/replies/update/{reply_id}' , [ReplyController::class ,'update'])->
 Route::delete('/replies/delete/{reply_id}' , [ReplyController::class ,'destroy'])->name('replies.delete');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//testimonials
-Route::get('/testimonials',[ TestimonialController::class,'index']);
-Route::post('/testimonials',[TestimonialController::class, 'store']);
-Route::get('/testimonials/{id}',[TestimonialController::class,'show']);
-Route::delete('/testimonials/{id}',[TestimonialController::class,'destroy']);
-Route::post('/testimonials/{id}',[TestimonialController::class,'update']);
-
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/logout', [authController::class, 'logout']);
 });

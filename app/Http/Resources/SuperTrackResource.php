@@ -17,9 +17,8 @@ class SuperTrackResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'subTracks'=>$this->subTrack,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-        ];  
+            'description' => $this->description,
+            'subTracks' => SubtrackResource::collection($this->subTrack),
+        ];
     }
 }

@@ -24,3 +24,7 @@ Route::post('/storeSubTrack' , ['App\Http\Controllers\Api\subtrackController','s
 Route::get('/allSubTracks' , ['App\Http\Controllers\Api\subtrackController','index'])->name('subTracks');
 Route::get('/subTrack/{subtrack}' , ['App\Http\Controllers\Api\subtrackController','show'])->name('subTrack.show');
 Route::get('/subtrack/getSubtrackQuestions/{subtrack_id}', [subTrackController::class ,'getSubtrackQuestions']);
+
+//image
+Route::get('/user/show/image', [UserController::class ,'getUserImage']);
+Route::post('/user/store/image', [UserController::class ,'setUserImage'])->middleware("auth::sanctum");

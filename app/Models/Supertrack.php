@@ -9,18 +9,23 @@ class Supertrack extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'name','description'
     ];
 
-    public function instructors(){
+    public function instructors()
+    {
         return $this->belongsToMany(Instructor::class);
     }
-    public function subTrack(){
-        return $this->belongsToMany(Subtrack::class,'supertrack_subtracks');
+    public function orders()
+    {
+        return $this->hasMany(Order::class,'track_id');
+    }
+    public function subTrack()
+    {
+        return $this->belongsToMany(Subtrack::class, 'supertrack_subtracks');
     }
     public function question()
     {
         return $this->hasMany(Question::class);
     }
-
 }

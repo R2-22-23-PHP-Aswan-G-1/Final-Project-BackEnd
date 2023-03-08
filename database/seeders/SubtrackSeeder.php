@@ -14,7 +14,7 @@ class SubtrackSeeder extends Seeder
     public function run(): void
     {
         $names = ['PHP', 'NODE JS', 'LARAVEL', 'MY SQL', 'OOP', 'REST-API',
-        'Symfony' ,'Apache' , 'Xampp'];
+        'Symfony' ,'Apache' , 'Xampp','.net' , 'HTML' ,'CSS' , 'JavaScript'];
        for ($i=0; $i < count($names); $i++) {
         Subtrack::create([
                'name' => $names[$i],

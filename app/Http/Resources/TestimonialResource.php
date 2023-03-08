@@ -8,11 +8,6 @@ use  App\Http\Resources\instructorResource;
 use App\Http\Resources\userResource;
 class TestimonialResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
         return  [
@@ -21,10 +16,8 @@ class TestimonialResource extends JsonResource
              'rate'=> $this->rate,
              'user_id'=>$this->user_id,
              'instructor_id'=>$this->instructor_id,
-            //  'instructor'=>  InstructorResource::collection($this->instructors)  ,
-            //  'user'=>  UserResource::collection($this->users) 
-           'instructor'=>$this->instructors,
-            'user'=>  $this->users
+            //  'instructor'=>$this->instructors,
+             'userName'=>  $this->users->name
         ];;
     }
 }
