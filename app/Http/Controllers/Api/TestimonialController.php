@@ -7,13 +7,14 @@ use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreTestimonialRequest;
 use App\Http\Resources\TestimonialResource;
+
 class TestimonialController extends Controller
 {
 
-    
+
     public function index()
     {
-         $testimonials= Testimonial ::all();
+        $testimonials = Testimonial::all();
         return TestimonialResource::collection($testimonials);
     }
 
@@ -22,81 +23,36 @@ class TestimonialController extends Controller
      */
     public function store(StoreTestimonialRequest $request)
     {
-         Testimonial::create([
-         'body'=> $request->body,
-         'rate'=>$request->rate,
-         'instructor_id'=>$request->instructur_id,
-         'user_id'=>$request->user_id
-       ]);
-       return ['message'=>'success'];       
-
+        Testimonial::create([
+            'body' => $request->body,
+            'rate' => $request->rate,
+            'instructor_id' => $request->instructur_id,
+            'user_id' => $request->user_id
+        ]);
+        return ['message' => 'success'];
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(  $testimonial)
+    public function show($testimonial)
     {
-        $testimonial= Testimonial ::find( $testimonial);
-        return new TestimonialResource( $testimonial); 
-      //return   $testimonial->instructors;   
+        $testimonial = Testimonial::find($testimonial);
+        return new TestimonialResource($testimonial);
     }
-  
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id )
+    public function update(Request $request, $id)
     {
-
-       
-        $testimonial= Testimonial::where('id',$id)->update([
+        $testimonial = Testimonial::where('id', $id)->update([
             'body' => $request->body,
             'rate' => $request->rate
         ]);
-
-return  ['message','updated'];
+        return  ['message', 'updated'];
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(  $testimonial)
+    public function destroy($testimonial)
     {
-        Testimonial::destroy( $testimonial);
-    return "deleted";
+        Testimonial::destroy($testimonial);
+        return "deleted";
     }
-
-
-
-
-    function testimonialDetails(){
-        
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

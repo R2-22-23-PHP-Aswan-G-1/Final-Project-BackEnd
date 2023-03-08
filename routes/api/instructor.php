@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\PostController;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/storeCertificate', [certificateController::class, 'store']);
+    Route::post('/delete/certificate/{certificate}', [certificateController::class, 'destroy']);
     Route::post('/storeInstructorEducation', [InstructorController::class, 'storeInstructorEducation']);
     Route::post('/addLanguageToInstructor', [InstructorController::class, 'storeLanguage']);
     Route::post('/addSuperTrackToInstructor', [InstructorController::class, 'storeSuperTrack']);

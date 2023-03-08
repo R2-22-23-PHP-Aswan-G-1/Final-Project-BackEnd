@@ -59,8 +59,24 @@ class PostController extends Controller
             'user_id' => Auth::id(),
             'post_id' => $request->post_id,
         ]);
-        if($flag){
-            return (['message'=>'success']);
+        if ($flag) {
+            return (['message' => 'success']);
+        }
+    }
+    public function updateComment(Request $request, Comment $comment)
+    {
+        $request->validate([
+            'body' => 'required',
+        ]);
+        $comment->body = $request->body;
+        if ($comment->save()) {
+            return (['message' => 'success']);
+        }
+    }
+    public function deleteComment(Comment $comment)
+    {
+        if ($comment->delete()) {
+            return (['message' => 'success']);
         }
     }
 }
