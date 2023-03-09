@@ -12,9 +12,11 @@ class OfferController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'order_id' => ['required', 'exists:App\Models\Order,id']
+            'order_id' => ['required', 'exists:App\Models\Order,id'],
+            'price' =>['required'],
         ]);
         Offer::create([
+            'price'=>$request->price,
             'order_id' => $request->order_id,
             'instructor_id' => Auth::user()->instructor->id
         ]);
@@ -23,6 +25,5 @@ class OfferController extends Controller
 
     public function acceptOffer()
     {
-        
     }
 }

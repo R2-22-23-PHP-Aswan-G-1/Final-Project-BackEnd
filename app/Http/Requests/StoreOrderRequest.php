@@ -15,7 +15,6 @@ class StoreOrderRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'price'=>['required'],
             'service_id'=>['required','exists:App\Models\Service,id'],
             'appointment'=>['required'],
             'track_id' => ['required','exists:App\Models\Supertrack,id']

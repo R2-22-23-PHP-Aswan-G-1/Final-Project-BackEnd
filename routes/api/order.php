@@ -18,11 +18,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/showOrderAccordingToTrack', [OrderController::class, 'showOrderAccordingToTrack']);
     Route::get('/show/order/{order}', [OrderController::class, 'show']);
+    Route::get('/show/user/order', [OrderController::class, 'showOrders']);
     Route::get('/complete/order/{order}', [OrderController::class, 'completeOrder']);
     Route::post('/orders/store', [OrderController::class, 'store']);
     Route::delete('/orders/delete/{order}', [OrderController::class, 'destroy'])->middleware('auth:sanctum');
     Route::put('/orders/update/{order}', [OrderController::class, 'update'])->name('orders.update');
-    Route::post('/accept/instructor', [OrderController::class, 'acceptInstructor']);
+    Route::get('/accept/offer/{offer}', [OrderController::class, 'acceptOffer']);
     
     //offer
     Route::post('/offer/store', [offerController::class, 'store']);

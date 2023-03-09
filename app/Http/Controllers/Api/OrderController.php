@@ -55,18 +55,17 @@ class OrderController extends Controller
         }
     }
 
-    public function acceptInstructor(Request $request)
+    public function acceptOffer(Offer $offer)
     {
-        $request->validate([
-            'instructor_id' => ['required', 'exists:App\Models\Instructor,id'],
-            'order_id' => ['required', 'exists:App\Models\Order,id']
-        ]);
-        $order = Order::where('id', $request->order_id);
-        $order->update([
-            'status' => "accepted",
-            'instructor_id' => $request->instructor_id
-        ]);
-        return (['message' => 'success']);
+        if (Auth::id() == $offer->order->user_id) {
+            $order = $offer->order;
+            $order->update([
+                'price' => $offer->price,
+                'status' => "accepted",
+                'instructor_id' => $offer->instructor_id
+            ]);
+            return (['message' => 'success']);
+        }
     }
 
     public function completeOrder(Order $order)
@@ -77,12 +76,17 @@ class OrderController extends Controller
         $service->totalEarning += $order->price * 20 / 100;
         $service->save();
         $offers = $order->offers;
+        $order->status = "completed";
+        $order->save();
         Offer::where('order_id', $order->id)->delete();
-        return (['message'=>'success']);
+        return (['message' => 'success']);
     }
     public function showOrderAccordingToTrack()
     {
-        
         return OrderResource::collection(Auth::user()->instructor->supertrack->orders);
+    }
+    public function showOrders()
+    {
+        return (['message' => 'success', 'orders' => OrderResource::collection(Auth::user()->orders)]);
     }
 }

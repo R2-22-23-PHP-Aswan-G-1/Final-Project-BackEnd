@@ -17,6 +17,7 @@ class PostCommentResource extends JsonResource
         }
         return [
             'id' => $this->id,
+            'created_at' => $this->created_at,
             'userId' => $this->user_id,
             'userName' => $this->user->name,
             'body' => $this->body,

@@ -11,16 +11,17 @@ class PostResource extends JsonResource
     public function toArray(Request $request): array
     {
         $user_id = Auth::id();
-        $flag =false;
-        if($user_id == $this->instructor_id){
+        $flag = false;
+        if ($user_id == $this->instructor_id) {
             $flag = true;
         }
         return [
-            'id'=>$this->id,
-            'body'=>$this->body,
-            'flag'=>$flag,
-            'insructor-creator'=>$this->instructor_id,
-            'comments'=>PostCommentResource::collection($this->comments)
+            'id' => $this->id,
+            'body' => $this->body,
+            'created_at' => $this->created_at,
+            'flag' => $flag,
+            'insructor-creator' => $this->instructor_id,
+            'comments' => PostCommentResource::collection($this->comments)
         ];
     }
 }

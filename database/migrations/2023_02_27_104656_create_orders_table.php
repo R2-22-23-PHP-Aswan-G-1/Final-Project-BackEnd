@@ -10,9 +10,9 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->decimal('price',8, 2);
+            $table->decimal('price',8, 2)->nullable();
             $table->string('attachement')->nullable();
-            $table->string('status')->nullable();
+            $table->string('status')->default('pending');
             $table->smallInteger('evaluation')->nullable();
             $table->text('vedio_link')->nullable();
             $table->string('appointment');

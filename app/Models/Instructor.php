@@ -43,7 +43,7 @@ class Instructor extends Model
 
     public function certificates()
     {
-        return $this->hasOne(Certificate::class);
+        return $this->hasMany(Certificate::class);
     }
 
     public function order()
