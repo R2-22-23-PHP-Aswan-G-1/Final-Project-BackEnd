@@ -1,44 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Resources\ServiceResource;
 use App\Models\Service;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ServiceController extends Controller
 {
-    public function index(){
-        $service = Service::all();
-
-        return $service ;
+    public function index()
+    {
+        $services = Service::all();
+        return (['message' => 'success', 'services' => ServiceResource::collection($services)]);
     }
 
-
-    public function store(Request $request){
-        
-        $service = $request->all() ; 
-        $name = $service['name'];
-
-        Service::create([
-
-            'name' => $name ,
-        ]);
-        return 'done';
+    public function store(Request $request)
+    {
+        //
     }
 
-    public function destroy($id){
-        Service::find($id)->delete();
-        return $this->index();
+    public function show(Service $service)
+    {
+        //
+    }
+    
+    public function update(Request $request, Service $service)
+    {
+        //
     }
 
-    public function update(Request $request ,$id){
-        $serviceup = Service::findOrFail($id) ;
-        $service = $request->all() ; 
-        $name = $service['name'];
-        $serviceup->update([
-            'name'=>$name
-        ]);
-        return $this->index();
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Service $service)
+    {
+        //
     }
 }

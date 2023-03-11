@@ -11,35 +11,24 @@ use Illuminate\Support\Facades\Auth;
 
 class certificateController extends Controller
 {
-
-    public function index()
-    {
-        //
-    }
-
-
     public function store(StoreCertificateRequest $request)
-    {   
+    {
         Certificate::create([
             'certificate' => $request->certificate,
             'instructor_id' => Auth::user()->instructor->id,
         ]);
-        return (['message'=>'succes']);
-    }
-
-    public function show(Certificate $certificate)
-    {
-        //
-    }
-
-
-    public function update(Request $request, Certificate $certificate)
-    {
-        //
+        return (['message' => 'succes']);
     }
 
     public function destroy(Certificate $certificate)
     {
-        //
+        $allCertificates = Auth::user()->instructor->certificates->get();
+        for ($i = 0; $i < count($allCertificates); $i++) {
+            if ($certificate->id ==   $allCertificates[$i]->id) {
+                $certificate->delete();
+                return (['message' => 'success']);
+            }
+        }
+        return (['message' => 'This Id Is Wrong']);
     }
 }

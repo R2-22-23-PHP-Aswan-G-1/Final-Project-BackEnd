@@ -13,7 +13,7 @@ use App\Http\Controllers\Api\SkillController;
 
 //skills
 Route::get('/skills',[ SkillController::class,'index']);
- Route::post('/skills',[SkillController::class, 'store']);
+Route::post('/skills',[SkillController::class, 'store']);
 Route::get('/skills/{id}',[SkillController::class,'show']);
 Route::delete('/skills/{id}',[SkillController::class,'destroy']);
 Route::post('/skills/{id}',[SkillController::class,'update']);

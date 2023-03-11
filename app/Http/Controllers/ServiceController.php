@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Language;
-use App\Models\Post;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class LanguageController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response
     {
         //
     }
@@ -20,18 +19,15 @@ class LanguageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): Response
     {
         //
-        Post::crete([
-            'body'
-        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Language $language)
+    public function show(Service $service): Response
     {
         //
     }
@@ -39,7 +35,7 @@ class LanguageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Language $language)
+    public function update(Request $request, Service $service): Response
     {
         //
     }
@@ -47,7 +43,7 @@ class LanguageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Language $language)
+    public function destroy(Service $service): Response
     {
         //
     }

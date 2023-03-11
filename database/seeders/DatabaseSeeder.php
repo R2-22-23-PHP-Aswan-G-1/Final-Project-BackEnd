@@ -16,21 +16,21 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Post::factory(100)->create();
         
         $this->call([
+            TrackSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
-            TrackSeeder::class,
-            SubtrackSeeder::class,
             InstructorSeeder::class,
+            SubtrackSeeder::class,
+            PostSeeder::class,
+            PostReplaySeeder::class,
+            LanguageSeeder::class,
+            TestimonialSeeder::class,
             // LikeSeeder::class,
-            QuestionSeeder::class,
-            QcommentSeeder::class ,
-            ReplySeeder::class,
+            // QuestionSeeder::class,
+            // QcommentSeeder::class ,
+            // ReplySeeder::class,
             ServiceSeeder::class,
-            OrderSeeder::class,
-            
-           
-            
-            
+            // OrderSeeder::class,
         ]);
 
         // \App\Models\User::factory()->create([
@@ -40,3 +40,4 @@ class DatabaseSeeder extends Seeder
     }
 }
 
+?>

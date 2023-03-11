@@ -12,6 +12,9 @@ class Language extends Model
 
     protected $fillable = [
         'name',
-       
     ];
+
+    public function instructors(){
+        return $this->belongsToMany(Instructor::class,'instructor_languages');
+    }
 }

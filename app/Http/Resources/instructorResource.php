@@ -21,6 +21,12 @@ class instructorResource extends JsonResource
             'certificates'=>$this->certificates,
             'posts'=>$this->posts,
             'skills'=>$this->skills,
+            'workHistory'=>$this->workHistory,
+            'language'=>languageResource::collection($this->languages),
+            'track'=> new SuperTrackResource( $this->superTrack),
+            'education'=>$this->education,
+            'major'=>$this->major,
+            'testimonials' => TestimonialResource::collection( $this->testimonials),
         ];  
     }
 }

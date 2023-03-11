@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use App\Models\Role;
-
+use Illuminate\Support\Facades\Auth;
 
 class authController extends Controller
 {
@@ -33,7 +33,7 @@ class authController extends Controller
         ]);
         if($user){
             $user = User::where('id', $user->id)->first();
-            return new userResource(User::findOrFail($user->id));
+            return (['message'=>'success' ,'data'=>new LoginResource($user) ,'token'=> $user->createToken($user->email)->plainTextToken]);
         }
     }
     public function login(Request $request)
@@ -45,16 +45,15 @@ class authController extends Controller
         $user = User::where('email', $request->email)->first();
         if (! $user || ! Hash::check($request->password, $user->password)) {
             return response(["message"=>"Invalid Email Or Password"]);
-        }
-        if($user->role->name == "instructor"){
-            return new instructorResource($user->instructor);
-        }else{
-            return (['message'=>'success' ,'data'=>new LoginResource($user)]);
+        }else {
+            return (['message'=>'success' ,'data'=>new LoginResource($user) ,'token'=> $user->createToken($user->email)->plainTextToken,
+        ]);
         }
     }
 
-    public function destroy(User $user)
+    public function logout(Request $request)
     {
-        //
+        $request->user()->currentAccessToken()->delete();
+        return (['message'=>'success']);
     }
 }

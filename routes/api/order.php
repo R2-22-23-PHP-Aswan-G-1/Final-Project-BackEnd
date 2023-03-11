@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Api\OfferController;
 use App\Http\Resources\userResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -11,12 +13,19 @@ use App\Models\Role;
 
 
 
-//orders
-Route::get('/orders' , [OrderController::class ,'index'])->name('orders.index');
-// Route::get('/orders/show/{user_id}/{role}', [OrderController::class ,'show'])->name('orders.show');
-Route::get('/orders/show/{order_id}' , [OrderController::class ,'show'])->name('orders.show');
-Route::post('/orders/store' , [OrderController::class ,'store'])->name('orders.store');
-Route::delete('/orders/delete/{order}' , [OrderController::class ,'destroy'])->name('orders.destroy');
-Route::put('/orders/update/{order}' , [OrderController::class ,'update'])->name('orders.update');
+Route::middleware('auth:sanctum')->group(function () {
+    //orders
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/showOrderAccordingToTrack', [OrderController::class, 'showOrderAccordingToTrack']);
+    Route::get('/show/order/{order}', [OrderController::class, 'show']);
+    Route::get('/show/user/order', [OrderController::class, 'showOrders']);
+    Route::get('/complete/order/{order}', [OrderController::class, 'completeOrder']);
+    Route::post('/orders/store', [OrderController::class, 'store']);
+    Route::delete('/orders/delete/{order}', [OrderController::class, 'destroy'])->middleware('auth:sanctum');
+    Route::put('/orders/update/{order}', [OrderController::class, 'update'])->name('orders.update');
+    Route::get('/accept/offer/{offer}', [OrderController::class, 'acceptOffer']);
+    
+    //offer
+    Route::post('/offer/store', [offerController::class, 'store']);
 
-?>
+});

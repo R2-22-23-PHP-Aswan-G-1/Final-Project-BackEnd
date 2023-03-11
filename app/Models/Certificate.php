@@ -12,8 +12,9 @@ class Certificate extends Model
         'certificate',
         'instructor_id'
     ];
+    
     public function instructor(){
-        return $this->belongsTo(Certificate::class);
+        return $this->belongsTo(Instructor::class);
     }
 }
 

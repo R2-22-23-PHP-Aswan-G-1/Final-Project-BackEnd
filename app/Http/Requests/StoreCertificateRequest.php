@@ -22,7 +22,6 @@ class StoreCertificateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            // 'instructor_id' => ['required','exists:App\Models\Instructor,id'],
             'certificate'=>['required' ,'file']
         ];
     }
@@ -32,8 +31,6 @@ class StoreCertificateRequest extends FormRequest
             [
                 'certificate.required' => 'The Certificate Field Is Required',
                 'certificate.file' => 'The Certificate Must be file',
-                // 'instructor_id.required' => 'Instructor Is Required',
-                // 'instructor_id.exists' => 'Instructor Is not Exist',
             ];
     }
 }

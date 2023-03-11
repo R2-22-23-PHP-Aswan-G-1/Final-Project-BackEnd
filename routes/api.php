@@ -8,6 +8,7 @@ use Illuminate\Validation\ValidationException;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\Role;
 use App\Http\Controllers\Api\SkillController;
+use App\Http\Controllers\Api\authController;
 use App\Http\Controllers\Api\TestimonialController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\ServiceController;
@@ -23,31 +24,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/login' , ['App\Http\Controllers\Api\authController','login'])->name('login');
-Route::post('/register' , ['App\Http\Controllers\Api\authController','register'])->name('register');
-
-Route::middleware('auth:sanctum')->group(function () {
-    // return $request->user();
-});
-
-//skills
-Route::get('/skills',[ SkillController::class,'index']);
-Route::post('/skills',[SkillController::class, 'store']);
-Route::get('/skills/{id}',[SkillController::class,'show']);
-Route::delete('/skills/{id}',[SkillController::class,'destroy']);
-Route::post('/skills/{id}',[SkillController::class,'update']);
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
 //forms routes
 Route::post('/login' , ['App\Http\Controllers\Api\authController','login'])->name('login');
 Route::post('/register' , ['App\Http\Controllers\Api\authController','register'])->name('register');
-
 Route::get('/user/profile' , ['App\Http\Controllers\Api\UserController','show'])->middleware('auth:sanctum');
-Route::middleware('auth:sanctum')->group(function () {
-    // return $request->user();
-});
+
 //////////////////////////////////////////////////////routes for user, question , subtrack questions////////////////////
 
 //user routes
@@ -128,3 +109,9 @@ Route::post('/subtracks',[subtrack_questionController::class, 'store']);
 Route::get('/subtracks/{id}',[subtrack_questionController::class,'show']);
 Route::delete('/subtracks/{id}',[subtrack_questionController::class,'destroy']);
 Route::put('/subtracks/{id}',[subtrack_questionController::class,'update']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/logout', [authController::class, 'logout']);
+});
+
+?>
+

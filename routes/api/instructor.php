@@ -10,14 +10,17 @@ use Illuminate\Validation\ValidationException;
 use App\Http\Requests\StoreUserRequest;
 use App\Models\Instructor;
 use App\Http\Controllers\Api\InstructorController;
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+use App\Http\Controllers\Api\PostController;
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/storeCertificate', [certificateController::class, 'store']);
+    Route::post('/delete/certificate/{certificate}', [certificateController::class, 'destroy']);
+    Route::post('/storeInstructorEducation', [InstructorController::class, 'storeInstructorEducation']);
+    Route::post('/addLanguageToInstructor', [InstructorController::class, 'storeLanguage']);
+    Route::post('/addSuperTrackToInstructor', [InstructorController::class, 'storeSuperTrack']);
+    Route::post('/storeInstructorWorkHistory', [InstructorController::class, 'storeInstructorWorkHistory']);
+    Route::post('/instructorSkill', [InstructorController::class, 'storeSkills']);
+    Route::get('/instructor/{instructor}', [InstructorController::class, 'show']);
 });
 
-Route::post('/instructorSkill',[InstructorController::class,'storeSkills']);
-Route::get('/instructor/{instructor}',[InstructorController::class,'show']);
-Route::post('/storeCertificate' , [certificateController::class,'store'])->middleware('auth:sanctum');
-// Route::post('/storePost' , [InstructorController::class,'store'])->middleware('auth:sanctum');
-Route::get('/instructor/{id}' , function (Request $request) {
-    $user = Instructor::where('user_id' , $request->id)->first();
-    return $user->user;
-});
+Route::get('/topTenInstructors', [InstructorController::class, 'topTenInstructors']);
