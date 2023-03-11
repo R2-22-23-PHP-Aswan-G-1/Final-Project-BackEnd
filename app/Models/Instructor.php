@@ -38,4 +38,9 @@ class Instructor extends Model
     public function order() {
         return $this->hasMany(Order::class);
     }
+
+    public function qcomment()
+    {
+        return $this->hasMany(Qcomment::class);
+    }
 }

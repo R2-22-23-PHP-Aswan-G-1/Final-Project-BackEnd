@@ -11,7 +11,7 @@ class Like extends Model
     protected $fillable = [
         'created_at',
         'user_id',
-        'comment_id'
+        'qcomment_id'
 
     ];
 

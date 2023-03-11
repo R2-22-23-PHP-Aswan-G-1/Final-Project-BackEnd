@@ -41,13 +41,11 @@ class ReplyController extends Controller
   public function update(Request $request, $reply_id)
   {
 
-      $question= Reply::where('id',$reply_id)->update([
+      $reply= Reply::findOrFail($reply_id);
+      $reply->update([
           'reply_body' => $request['reply_body'],
-        
       ]);
-
-// return  ['message','updated'];
-return $this->index();
+      return new ReplyResource(Reply::find($reply_id));
   }
 
   public function destroy($reply_id){
