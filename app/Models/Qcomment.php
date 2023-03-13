@@ -9,11 +9,19 @@ class Qcomment extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
+        'qcomment_body',
+        'instructor_id',
+        'created_at',
+        'question_id',
     ];
 
     public function reply()
     {
         return $this->hasMany(Reply::class);
+    }
+
+    public function instructor()
+    {
+        return $this->belongsTo(Instructor::class);
     }
 }

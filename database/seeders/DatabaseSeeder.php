@@ -1,7 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -26,6 +25,7 @@ class DatabaseSeeder extends Seeder
             PostReplaySeeder::class,
             LanguageSeeder::class,
             TestimonialSeeder::class,
+            TestSeeder::class,
             // LikeSeeder::class,
             // QuestionSeeder::class,
             // QcommentSeeder::class ,
@@ -40,3 +40,5 @@ class DatabaseSeeder extends Seeder
         // ]);
     }
 }
+
+?>

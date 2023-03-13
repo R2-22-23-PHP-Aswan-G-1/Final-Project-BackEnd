@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\instructorResource;
 use App\Http\Resources\languageResource;
 use App\Http\Resources\PostResource;
+use App\Http\Resources\SubtrackResource;
 use App\Http\Resources\SuperTrackResource;
 use App\Http\Resources\TrackResource;
 use App\Http\Resources\TestimonialResource;
 use App\Models\Instructor;
+use App\Models\Subtrack;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -48,5 +50,28 @@ class profileController extends Controller
     public function getInstructorWorkHistory(User $user){
         return (['message'=>'success', 'data' => $user->instructor->workHistory]);
     }
+    public function getInstructorSubTrack(User $user){
+        return (['message'=>'success', 'data' => SubtrackResource::collection($user->instructor->subtracks) ]);
+    }
+    public function getInstructorVerifiedSubTrack(User $user){
+        $all_sub_tracks = $user->instructor->superTrack->subTrack;
+        $all_sub_tracks_ids = [];
+        $returned_sub_tracks =[];
+        $all_verified_sub_tracks_ids=[];
+        $verified_sub_tracks = $user->instructor->subtracks;
+        for ($i=0; $i < count( $verified_sub_tracks); $i++) { 
+            $all_verified_sub_tracks_ids[]=  $verified_sub_tracks[$i]['id'];
+        }
+        for ($i=0; $i < count( $all_sub_tracks); $i++) { 
+            $all_sub_tracks_ids[]=  $all_sub_tracks[$i]['id'];
+        }
+        for ($i=0; $i < count( $all_sub_tracks); $i++) { 
+            if(!in_array($all_sub_tracks[$i]['id'] , $all_verified_sub_tracks_ids)) {
+                $returned_sub_tracks []= $all_sub_tracks[$i] ;
+            }
+        }
+        return (['message'=>'success', 'data' => SubtrackResource::collection($returned_sub_tracks ) ]);
+    }
+    
 }
 

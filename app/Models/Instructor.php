@@ -50,6 +50,12 @@ class Instructor extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+
+    public function qcomment()
+    {
+        return $this->hasMany(Qcomment::class);
+    }
     public function languages()
     {
         return $this->belongsToMany(Language::class, 'instructor_languages');
@@ -64,4 +70,9 @@ class Instructor extends Model
     {
         return $this->hasMany(Education::class,);
     }
+    public function subtracks()
+    {
+        return $this->belongsToMany(Subtrack::class,'instructor_subtracks');
+    } 
 }
+?>

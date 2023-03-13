@@ -18,6 +18,7 @@ class InstructorSeeder extends Seeder
         for ($i=0; $i < count($user_ids); $i++) {
             $instructor = Instructor::create([
                 'rate' => $i,
+                'supertrack_id' => 1,
                 'user_id' => $user_ids[$i]['id'],
             ]);
         }

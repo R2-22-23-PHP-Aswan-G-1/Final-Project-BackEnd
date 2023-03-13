@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Qcomment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use  App\Models\Qcomment;
 
 class QcommentSeeder extends Seeder
 {
@@ -20,7 +21,7 @@ class QcommentSeeder extends Seeder
                  Qcomment::create([
                 'qcomment_body' => $qComments[$i],
                 'instructor_id' => $id[$i] ,
-                'question_id' => 1
+                'question_id' => 2
 
             ]);
         }
