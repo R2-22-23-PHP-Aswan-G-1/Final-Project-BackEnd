@@ -17,11 +17,11 @@ class TestController extends Controller
     public function index(Request $request) {
         $counter = 0;
         $answers = $request->answer;
-        for ($i=0; $i < $answers; $i++) { 
+        for ($i=0; $i < count($answers) ; $i++) { 
             if (Answer::where('id' , $answers[$i])->select('correct')->get()){
                 $counter++;
             }
-            return (['message' =>'success' , 'mark'=>$counter , 'percentage' => $counter / count($answers)]);
         };
+        return (['message' =>'success' , 'mark'=>$counter , 'percentage' => $counter / (count($answers)-1)]);
     }
 }
