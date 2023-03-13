@@ -55,6 +55,11 @@ return array(
     'App\\Http\\Requests\\StoreTestimonialRequest' => $baseDir . '/app/Http/Requests/StoreTestimonialRequest.php',
     'App\\Http\\Requests\\StoreTrackRequest' => $baseDir . '/app/Http/Requests/StoreTrackRequest.php',
     'App\\Http\\Requests\\StoreUserRequest' => $baseDir . '/app/Http/Requests/StoreUserRequest.php',
+    'App\\Http\\Resources\\LoginResource' => $baseDir . '/app/Http/Resources/LoginResource.php',
+    'App\\Http\\Resources\\OrderResource' => $baseDir . '/app/Http/Resources/OrderResource.php',
+    'App\\Http\\Resources\\ProfileResource' => $baseDir . '/app/Http/Resources/ProfileResource.php',
+    'App\\Http\\Resources\\QcommentResource' => $baseDir . '/app/Http/Resources/QcommentResource.php',
+
     'App\\Http\\Requests\\UpdateEducationRequest' => $baseDir . '/app/Http/Requests/UpdateEducationRequest.php',
     'App\\Http\\Requests\\UpdatePostReplayRequest' => $baseDir . '/app/Http/Requests/UpdatePostReplayRequest.php',
     'App\\Http\\Requests\\UpdateTestRequest' => $baseDir . '/app/Http/Requests/UpdateTestRequest.php',

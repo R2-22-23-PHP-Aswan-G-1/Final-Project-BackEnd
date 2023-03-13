@@ -12,11 +12,10 @@ use Illuminate\Http\Request;
 class QuestionController extends Controller
 {
     public function index(){
-        $questions = Question::all();
+        $questions = Question::all()->sortDesc();
         return QuestionResource::collection($questions);
-        }
-        
-   
+    }
+
     public function show($question_id){
         $question =  Question::find($question_id);
         return new QuestionResource($question);
@@ -28,13 +27,13 @@ class QuestionController extends Controller
         $user_id = $question['user_id'];
         $subtrack_id = $question['subtrack_id'];
        
-        Question::create([
+         Question::create([
             'question_body'=>$question_body,
             'user_id'=>$user_id,
             'subtrack_id'=>$subtrack_id,
 
         ]);
-        return "done";
+        return $this->indexfristquestion();
 
     }
 
@@ -43,11 +42,12 @@ class QuestionController extends Controller
 
         $question= Question::where('id',$id)->update([
             'question_body' => $request['question_body'],
+            'subtrack_id' => $request['subtrack_id'],
             // 'subtrack_id' => $request['subtrack_id'],
         ]);
 
-// return  ['message','updated'];
-return $this->index();
+        // return  ['message','updated'];
+        return new QuestionResource(Question::find($id));
     }
 
     public function destroy($Id){
@@ -55,4 +55,31 @@ return $this->index();
         Question::find($Id)->delete();
         return $this->index();
     }
+
+    public function showFilter($subtrackid){
+
+        $questions = Question::select('*')->where("subtrack_id",$subtrackid)->get()->sortDesc();
+        return QuestionResource::collection($questions);
+    }
+    public function showfristFilter($subtrackid){
+
+        $questions = Question::select('*')->where("subtrack_id",$subtrackid)->skip(0)->take(1)->get();
+        return QuestionResource::collection($qcomments);
+    }
+
+    public function showtenfristFilter($subtrackid){
+
+        $questions = Question::select('*')->where("subtrack_id",$subtrackid)->skip(0)->take(10)->get();
+        return QuestionResource::collection($qcomments);
+    }
+    public function indexfristquestion(){
+        $questions = Question::all()->sortDesc()->skip(0)->take(1);
+        return QuestionResource::collection($questions);
+    }
+
+    public function indextenfristquestion(){
+        $questions = Question::all()->sortDesc()->skip(0)->take(10);
+        return QuestionResource::collection($questions);
+    }
+   
 }

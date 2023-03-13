@@ -564,6 +564,12 @@ class ComposerStaticInit664d85cef553f2eb8eaedf8b3597196c
         'App\\Http\\Requests\\StoreTestimonialRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreTestimonialRequest.php',
         'App\\Http\\Requests\\StoreTrackRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreTrackRequest.php',
         'App\\Http\\Requests\\StoreUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreUserRequest.php',
+
+        'App\\Http\\Resources\\LoginResource' => __DIR__ . '/../..' . '/app/Http/Resources/LoginResource.php',
+        'App\\Http\\Resources\\OrderResource' => __DIR__ . '/../..' . '/app/Http/Resources/OrderResource.php',
+        'App\\Http\\Resources\\ProfileResource' => __DIR__ . '/../..' . '/app/Http/Resources/ProfileResource.php',
+        'App\\Http\\Resources\\QcommentResource' => __DIR__ . '/../..' . '/app/Http/Resources/QcommentResource.php',
+
         'App\\Http\\Requests\\UpdateEducationRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateEducationRequest.php',
         'App\\Http\\Requests\\UpdatePostReplayRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdatePostReplayRequest.php',
         'App\\Http\\Requests\\UpdateTestRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateTestRequest.php',
@@ -573,6 +579,7 @@ class ComposerStaticInit664d85cef553f2eb8eaedf8b3597196c
         'App\\Http\\Resources\\PostCommentResource' => __DIR__ . '/../..' . '/app/Http/Resources/PostCommentResource.php',
         'App\\Http\\Resources\\PostResource' => __DIR__ . '/../..' . '/app/Http/Resources/PostResource.php',
         'App\\Http\\Resources\\ProfileResource' => __DIR__ . '/../..' . '/app/Http/Resources/ProfileResource.php',
+
         'App\\Http\\Resources\\QuestionResource' => __DIR__ . '/../..' . '/app/Http/Resources/QuestionResource.php',
         'App\\Http\\Resources\\ReplyResource' => __DIR__ . '/../..' . '/app/Http/Resources/ReplyResource.php',
         'App\\Http\\Resources\\ServiceResource' => __DIR__ . '/../..' . '/app/Http/Resources/ServiceResource.php',
