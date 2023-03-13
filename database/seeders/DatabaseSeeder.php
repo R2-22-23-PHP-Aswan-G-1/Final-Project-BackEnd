@@ -16,10 +16,10 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Post::factory(100)->create();
         
         $this->call([
-            TrackSeeder::class,
-            RoleSeeder::class,
-            UserSeeder::class,
-            InstructorSeeder::class,
+            // TrackSeeder::class,
+            // RoleSeeder::class,
+            // UserSeeder::class,
+            // InstructorSeeder::class,
             SubtrackSeeder::class,
             PostSeeder::class,
             PostReplaySeeder::class,

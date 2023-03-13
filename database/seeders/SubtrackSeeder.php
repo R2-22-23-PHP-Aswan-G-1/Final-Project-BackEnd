@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Subtrack;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use  App\Models\subtrack;
+
 
 class SubtrackSeeder extends Seeder
 {
