@@ -70,5 +70,9 @@ class Instructor extends Model
     {
         return $this->hasMany(Education::class,);
     }
+    public function subtracks()
+    {
+        return $this->belongsToMany(Subtrack::class,'instructor_subtracks');
+    } 
 }
 ?>

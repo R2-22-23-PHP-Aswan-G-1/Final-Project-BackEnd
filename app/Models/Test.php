@@ -15,7 +15,7 @@ class Test extends Model
     public function answers(){
       return $this->hasMany(Answer::class,) ; 
     }
-    public function subtrack(){
-      return $this->belongsTo(Subtrack::class,) ; 
+    public function subTrack(){
+      return $this->belongsTo(Subtrack::class,'subtrack_id') ; 
     }
 }

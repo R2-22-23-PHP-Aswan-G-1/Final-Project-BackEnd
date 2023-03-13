@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Answer extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'test_id',
+        'correct',
+        'body'
+    ];
+    
+    public function test()
+    {
+        return $this->belongsTo(Test::class, );
+    }
 }

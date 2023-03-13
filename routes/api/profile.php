@@ -29,3 +29,4 @@ Route::get('/getInstructorEducation/{user}', [profileController::class, 'getInst
 Route::get('/getInstructorProfile/{user}', [profileController::class, 'getInstructorProfile']);
 Route::get('/getInstructorWorkHistory/{user}', [profileController::class, 'getInstructorWorkHistory']);
 Route::get('/topTenInstructors', [InstructorController::class, 'topTenInstructors']);
+Route::get('/getInstructorVerifiedSubTrack/{user}', [profileController::class, 'getInstructorVerifiedSubTrack']);
