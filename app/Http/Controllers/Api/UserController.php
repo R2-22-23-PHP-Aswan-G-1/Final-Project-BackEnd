@@ -50,12 +50,14 @@ class UserController extends Controller
 
     public function setUserImage(Request $request)
     {
+
+        $request->image->storeAs("public/imgs",$request->image->getClientOriginalName());
         $request->validate([
             'image' => ['required', 'image']
         ]);
         $user_id = Auth::id();
         $user  = User::where('id', $user_id)->first();
-        $user->image = $request->image;
+        $user->image = $request->image->getClientOriginalName();
         $user->save();
         return (['message' => 'success']);
     }
