@@ -18,7 +18,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\subtrack_questionController;
 use App\Http\Controllers\Api\ReplyController;
 use App\Http\Controllers\Api\QcommentController;
-
+use App\Http\Controllers\Api\PostController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -112,6 +112,15 @@ Route::put('/subtracks/{id}',[subtrack_questionController::class,'update']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/logout', [authController::class, 'logout']);
 });
+
+///////////////////////////
+Route::post('/storePost', [PostController::class, 'store']);
+Route::post('/addPostComment', [PostController::class, 'addComment']);
+Route::put('/update/comment/{comment}', [PostController::class, 'updateComment']);
+Route::delete('/delete/comment/{comment}', [PostController::class, 'deleteComment']);
+Route::delete('/deletePost/{post}', [PostController::class, 'destroy']);
+Route::put('/updatePost/{post}', [PostController::class, 'update']);
+Route::get('/posts', [PostController::class, 'index']);
 
 ?>
 

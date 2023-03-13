@@ -19,7 +19,7 @@ class ReplySeeder extends Seeder
         for ($i=0; $i < count($replies); $i++) {
                  Reply::create([
                 'reply_body' => $replies[$i],
-                'user_id' => 5 ,
+                'user_id' =>1 ,
                 'qcomment_id'=>1
                  ]);
     }

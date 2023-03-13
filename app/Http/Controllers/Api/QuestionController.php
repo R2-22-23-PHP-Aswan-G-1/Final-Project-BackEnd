@@ -12,13 +12,28 @@ use Illuminate\Http\Request;
 class QuestionController extends Controller
 {
     public function index(){
-        $questions = Question::all()->sortDesc();
-        return QuestionResource::collection($questions);
+        $questions = Question::latest()->get();
+        foreach ($questions as $item) {
+            $qcomment=$item->qcomment;
+            $user=$item->user;
+            $subtrack=$item->subtrack;
+            foreach ($qcomment as $item) {
+                $reply=$item->reply;
+                $insructor=$item->instructor->user;
+            }
+        }
+        // return QuestionResource::collection($questions);
+        return response()->json(['data'=>$questions]);
     }
 
     public function show($question_id){
         $question =  Question::find($question_id);
-        return new QuestionResource($question);
+
+            $question->qcomment;
+            $question->user;
+            $question->subtrack;
+            return response()->json(['data'=>$questions]);
+        // return new QuestionResource($question);
     }
   
     public function store(Request $request){
@@ -58,8 +73,18 @@ class QuestionController extends Controller
 
     public function showFilter($subtrackid){
 
-        $questions = Question::select('*')->where("subtrack_id",$subtrackid)->get()->sortDesc();
-        return QuestionResource::collection($questions);
+        $questions = Question::select('*')->where("subtrack_id",$subtrackid)->latest()->get();
+        foreach ($questions as $item) {
+            $qcomment=$item->qcomment;
+            $user=$item->user;
+            $subtrack=$item->subtrack;
+            foreach ($qcomment as $item) {
+                $item->reply;
+            }
+        }
+        return response()->json(['data'=>$questions]);
+
+        // return QuestionResource::collection($questions);
     }
     public function showfristFilter($subtrackid){
 
