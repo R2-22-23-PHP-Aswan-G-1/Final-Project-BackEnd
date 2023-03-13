@@ -24,7 +24,7 @@ class PostController extends Controller
     {
         Post::create([
             'body' => $request->body,
-            'instructor_id' => Auth::id(),
+            'instructor_id' =>$request->instructor_id,
         ]);
         return (['message' => 'success']);
     }

@@ -16,22 +16,24 @@ class DatabaseSeeder extends Seeder
         // \App\Models\Post::factory(100)->create();
         
         $this->call([
-            TrackSeeder::class,
-            RoleSeeder::class,
-            UserSeeder::class,
-            InstructorSeeder::class,
-            SubtrackSeeder::class,
-            PostSeeder::class,
-            PostReplaySeeder::class,
-            LanguageSeeder::class,
-            TestimonialSeeder::class,
-            TestSeeder::class,
-            // LikeSeeder::class,
+
+            // TrackSeeder::class,
+            // RoleSeeder::class,
+            // UserSeeder::class,
+            // InstructorSeeder::class,
+            // SubtrackSeeder::class,
+            // PostSeeder::class,
+            // PostReplaySeeder::class,
+            // LanguageSeeder::class,
+            // TestimonialSeeder::class,
+            // TestSeeder::class,
+            LikeSeeder::class,
             // QuestionSeeder::class,
             // QcommentSeeder::class ,
-            // ReplySeeder::class,
+            ReplySeeder::class,
             ServiceSeeder::class,
-            // OrderSeeder::class,
+            OrderSeeder::class,
+
         ]);
 
         // \App\Models\User::factory()->create([

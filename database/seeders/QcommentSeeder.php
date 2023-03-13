@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Qcomment;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use  App\Models\Qcomment;
+
 
 class QcommentSeeder extends Seeder
 {

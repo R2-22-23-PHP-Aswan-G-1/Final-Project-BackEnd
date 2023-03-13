@@ -24,4 +24,8 @@ class Qcomment extends Model
     {
         return $this->belongsTo(Instructor::class);
     }
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
+    }
 }

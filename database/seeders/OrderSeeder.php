@@ -22,7 +22,7 @@ class OrderSeeder extends Seeder
             'evaluation' => 5, 
             'service_id' => 1,
             'track_id'=> 1 ,
-            'subtrack_id'=> 1
+            // 'subtrack_id'=> 1
         ]);
     }
 }
