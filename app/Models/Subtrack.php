@@ -21,4 +21,7 @@ class Subtrack extends Model
     public function order(){
         return $this->hasMany(Order::class);
     }
+    public function tests(){
+        return $this->hasMany(Test::class,) ; 
+      }
 }

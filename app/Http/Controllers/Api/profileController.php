@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\instructorResource;
 use App\Http\Resources\languageResource;
 use App\Http\Resources\PostResource;
+use App\Http\Resources\SubtrackResource;
 use App\Http\Resources\SuperTrackResource;
 use App\Http\Resources\TrackResource;
 use App\Http\Resources\TestimonialResource;
@@ -48,5 +49,9 @@ class profileController extends Controller
     public function getInstructorWorkHistory(User $user){
         return (['message'=>'success', 'data' => $user->instructor->workHistory]);
     }
+    public function getInstructorSubTrack(User $user){
+        return (['message'=>'success', 'data' => SubtrackResource::collection($user->instructor->superTrack->subTrack) ]);
+    }
+    
 }
 

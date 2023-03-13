@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             PostReplaySeeder::class,
             LanguageSeeder::class,
             TestimonialSeeder::class,
+            TestSeeder::class,
             // LikeSeeder::class,
             // QuestionSeeder::class,
             // QcommentSeeder::class ,

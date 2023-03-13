@@ -13,52 +13,36 @@ class SkillController extends Controller
      */
     public function index()
     {
-        $skills= Skill ::all();
+        $skills = Skill::all();
         return $skills;
-       
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $request -> validate(
-             rules:   [
-                    'name'=>['required']
-             ],
-            params:[
-                'name.required'=>['skill is required']
+        $request->validate(
+            rules: [
+                'name' => ['required']
+            ],
+            params: [
+                'name.required' => ['skill is required']
             ]
-            );
-
-        $data=$request->all();
-        Skill::create($data);        
-
+        );
+        $data = $request->all();
+        Skill::create($data);
     }
-    public function show( $skill)
+    public function show($skill)
     {
-        $skill= Skill ::find($skill);     
+        $skill = Skill::find($skill);
     }
-  
+
     public function update(Request $request)
     {
-       Skill::find($request->id)->update([
+        Skill::find($request->id)->update([
             'name' => $request->name
         ]);
-
-
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy( $skill)
+    public function destroy($skill)
     {
         Skill::destroy($skill);
-    
     }
-
-
-
 }
