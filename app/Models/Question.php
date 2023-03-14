@@ -26,4 +26,18 @@ class Question extends Model
     {
         return $this->belongsTo(Subtrack::class);
     }
+<<<<<<< HEAD
+=======
+    public function qcomment(){
+        return $this->hasMany(Qcomment::class);
+    }
+
+
+
+  
+   
+  
+   
+  
+>>>>>>> 6a625cd5db10f350e4f9bcec7d629dea719eda9c
 }

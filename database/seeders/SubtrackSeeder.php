@@ -5,6 +5,10 @@ namespace Database\Seeders;
 use App\Models\Subtrack;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6a625cd5db10f350e4f9bcec7d629dea719eda9c
 
 class SubtrackSeeder extends Seeder
 {

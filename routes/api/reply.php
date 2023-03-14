@@ -15,3 +15,4 @@ Route::post('/replies/store' , [ReplyController::class ,'store'])->name('replies
 Route::post('/replies/update/{reply_id}' , [ReplyController::class ,'update'])->name('replies.update');
 Route::delete('/replies/delete/{reply_id}' , [ReplyController::class ,'destroy'])->name('replies.delete');
 
+

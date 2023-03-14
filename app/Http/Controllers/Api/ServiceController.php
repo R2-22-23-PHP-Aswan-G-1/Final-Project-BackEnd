@@ -15,27 +15,4 @@ class ServiceController extends Controller
         $services = Service::all();
         return (['message' => 'success', 'services' => ServiceResource::collection($services)]);
     }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Service $service)
-    {
-        //
-    }
-    
-    public function update(Request $request, Service $service)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Service $service)
-    {
-        //
-    }
 }

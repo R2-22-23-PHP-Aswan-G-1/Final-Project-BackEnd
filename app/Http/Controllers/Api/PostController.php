@@ -26,7 +26,7 @@ class PostController extends Controller
     {
         Post::create([
             'body' => $request->body,
-            'instructor_id' => Auth::id(),
+            'instructor_id' =>$request->instructor_id,
         ]);
         $this->increasePoints(Auth::user()->instructor);
         return (['message' => 'success']);
@@ -59,7 +59,7 @@ class PostController extends Controller
         ]);
         $flag = Comment::create([
             'body' => $request->body,
-            'user_id' => Auth::id(),
+            'user_id' => $request->user_id,
             'post_id' => $request->post_id,
         ]);
         if ($flag) {

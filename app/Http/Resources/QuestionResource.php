@@ -22,7 +22,9 @@ class QuestionResource extends JsonResource
             "user_name"=>$this->user->name,
             "subtrack_id"=>$this->subtrack->id ,
             "subtrack_name"=>$this->subtrack->name ,
-            "created_at"=>$this->created_at
+            "created_at"=>$this->created_at,
+            "comment"=>$this->qcomment,
+            "commentnumber"=>$this->qcomment->count('question_id'),
         ];
     }
 }

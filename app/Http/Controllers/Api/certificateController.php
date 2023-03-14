@@ -15,8 +15,9 @@ class certificateController extends Controller
     use InstructorTrait;
     public function store(StoreCertificateRequest $request)
     {
+        $request->certificate->storeAs("public/imgs",$request->certificate->getClientOriginalName());
         Certificate::create([
-            'certificate' => $request->certificate,
+            'certificate' => $request->certificate->getClientOriginalName(),
             'instructor_id' => Auth::user()->instructor->id,
         ]);
         $this->increasePoints(Auth::user()->instructor);
@@ -24,14 +25,8 @@ class certificateController extends Controller
     }
 
     public function destroy(Certificate $certificate)
-    {
-        $allCertificates = Auth::user()->instructor->certificates->get();
-        for ($i = 0; $i < count($allCertificates); $i++) {
-            if ($certificate->id ==   $allCertificates[$i]->id) {
-                $certificate->delete();
-                return (['message' => 'success']);
-            }
-        }
-        return (['message' => 'This Id Is Wrong']);
+    {   
+            $certificate->delete();       
+        return response()->json(['message' => 'success']);
     }
 }

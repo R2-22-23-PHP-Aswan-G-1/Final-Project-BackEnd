@@ -21,8 +21,8 @@ class QcommentResource extends JsonResource
             'instructor_id'=>$this->instructor_id,
             'instructor_name'=>$this->instructor->user->name,
             'instructor_rate'=>$this->instructor->rate,
-            'question_id'=>$this->question_id
-
+            'question_id'=>$this->question_id,
+            'replis'=>$this->reply
 
         ];
     }
