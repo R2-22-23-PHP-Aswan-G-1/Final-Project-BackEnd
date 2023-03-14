@@ -10,9 +10,11 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
+use App\Http\traits\InstructorTrait;
 
 class PostController extends Controller
 {
+    use InstructorTrait;
 
     public function index()
     {
@@ -26,6 +28,7 @@ class PostController extends Controller
             'body' => $request->body,
             'instructor_id' => Auth::id(),
         ]);
+        $this->increasePoints(Auth::user()->instructor);
         return (['message' => 'success']);
     }
 

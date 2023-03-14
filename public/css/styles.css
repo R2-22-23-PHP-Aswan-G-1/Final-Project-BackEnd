@@ -53,7 +53,14 @@
 
 
 /*------------------------- 1. Core Css -------------------*/
-
+:root {
+    --main-color: rgb(3, 37, 65);
+    --main-color-alt: #1787e0;
+    --section-background: #ececec;
+    --main-transition: 0.3s ease;
+    --sec-color : #1ed5a9;
+    /* #1ed5a9 */
+  }
 .page-container {
     width: 100%;
     height: 100%;
@@ -102,14 +109,14 @@
 
 /*-------------------- 2.1 Sidebar Menu -------------------*/
 .logo {
+    font-size:2rem;
+    text-align: center;
 
-    font-size:1.5rem;
     font-family: 'Courgette', cursive;
     background:linear-gradient(45deg  , var(--main-color-alt) ,var(--sec-color)  );
     -webkit-background-clip: text;
-    /* -webkit-text-fill-color: transparent; */
-  
-  }
+    -webkit-text-fill-color: transparent;  
+}
 .sidebar-menu {
     position: fixed;
     left: 0;

@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+use App\Http\traits\InstructorTrait;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\QcommentResource;
 use App\Models\Qcomment;
+use Illuminate\Support\Facades\Auth;
+
 class QcommentController extends Controller
 {
     public function index()
@@ -29,12 +32,10 @@ class QcommentController extends Controller
             'question_id'=>$question_id,
 
         ]);
-        // return QcommentResource::collection(Qcomment::all()->sortDesc()->skip(0)->take(1));
+        $this->increasePoints(Auth::user()->instructor);
         return $this->index();
 
     }
-
-
 
     public function show( $qcomment_id)
     {
@@ -61,7 +62,7 @@ class QcommentController extends Controller
     
     public function destroy( $qcomment_id)
     {
-        Qucomment::find($qcomment_id)->delete();
+        Qcomment::find($qcomment_id)->delete();
         return $this->index();
     }
 
@@ -70,6 +71,4 @@ class QcommentController extends Controller
         $qcomments = Qcomment::select('*')->where('question_id',$question_id)->limit(1)->get();
         return QcommentResource::collection($qcomments);
     }
-
-
 }

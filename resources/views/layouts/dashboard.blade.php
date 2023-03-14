@@ -1,5 +1,7 @@
 <?php 
 $services = App\Models\Service::all();
+$tracks = App\Models\Supertrack::all();
+
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -9,6 +11,7 @@ $services = App\Models\Service::all();
     <title>DeveloperZone - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/themify-icons.css') }}">
@@ -25,6 +28,21 @@ $services = App\Models\Service::all();
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
     <!-- modernizr css -->
     <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
+    {{-- //pusher --}}
+
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+  <script>
+
+   var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
+      cluster: '{{env("PUSHER_APP_CLUSTER")}}',
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe('notify-channel');
+    channel.bind('App\\Events\\Notify', function(data) {
+      alert(data.message);
+    });
+  </script>
 </head>
 <body>
     <div id="preloader">
@@ -35,10 +53,10 @@ $services = App\Models\Service::all();
     <div class="page-container">
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
-            <div class="sidebar-header">
-                <div class="logo">
+             <div class="sidebar-header logo d-flex justify-content-center ">
+                
                     <a href="index.html" class="logo">DevZone</a>
-                </div>
+                
             </div>
             <div class="main-menu">
                 <div class="menu-inner">
@@ -63,11 +81,12 @@ $services = App\Models\Service::all();
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Charts</span></a>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-pie-chart"></i><span>Tracks</span></a>
                                 <ul class="collapse">
-                                    <li><a href="barchart.html">bar chart</a></li>
-                                    <li><a href="linechart.html">line Chart</a></li>
-                                    <li><a href="piechart.html">pie chart</a></li>
+                                    @foreach ($tracks as $track)
+
+                                    <li><a href="{{ route('tracks.show',$track->id) }}">{{ $track->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li>

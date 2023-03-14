@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,26 +12,18 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = [
-    
-        
-        
         'question_body',
-            'user_id',
-            'subtrack_id',
-            
+        'user_id',
+        'subtrack_id',
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function subtrack(){
+    public function subtrack()
+    {
         return $this->belongsTo(Subtrack::class);
     }
-
-  
-   
-  
-   
-  
 }

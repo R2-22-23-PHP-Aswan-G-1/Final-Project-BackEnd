@@ -13,8 +13,7 @@ class OrderController extends Controller
 {
     public function index(Service $service)
     {
-        
-            return View('dashboard/orders.index')->with('orders' , $service->orders);
+        return View('dashboard/orders.index')->with('orders', $service->orders);
     }
 
     /**

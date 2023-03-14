@@ -8,15 +8,18 @@ use App\Models\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use App\Http\traits\InstructorTrait;
 
 class certificateController extends Controller
 {
+    use InstructorTrait;
     public function store(StoreCertificateRequest $request)
     {
         Certificate::create([
             'certificate' => $request->certificate,
             'instructor_id' => Auth::user()->instructor->id,
         ]);
+        $this->increasePoints(Auth::user()->instructor);
         return (['message' => 'succes']);
     }
 

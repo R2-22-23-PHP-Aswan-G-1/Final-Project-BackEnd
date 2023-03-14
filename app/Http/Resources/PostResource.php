@@ -21,6 +21,7 @@ class PostResource extends JsonResource
             'created_at' => $this->created_at,
             'flag' => $flag,
             'insructor-creator' => $this->instructor_id,
+            'user-image' => $this->instructor->user->image,
             'comments' => PostCommentResource::collection($this->comments)
         ];
     }

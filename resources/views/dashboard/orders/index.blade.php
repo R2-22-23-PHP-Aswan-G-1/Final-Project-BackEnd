@@ -14,7 +14,9 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">User</th>
-                                <th scope="col">Deadline</th>
+                                <th scope="col">Instructor</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Appointement</th>
                                 <th scope="col">Progress</th>
                                 <th scope="col">status</th>
                                 <th scope="col">action</th>
@@ -24,22 +26,34 @@
 
                             @if ($orders != null)
                             @foreach ($orders as $order)
-                            @php
-                            if ($order->status == "pendind"){
-                                $width = 50;
+                           
+                            @if ($order->status == "pending")
+                              <?php 
+                              $width = 50;
                                 $bg = "bg-primary";
-                            }elseif ($order->status) {
-                                // $width = 
-                            }                          
-                            @endphp
- 
+                              ?>  
+                            @elseif ($order->status == "working")
+                            <?php 
+                              $width = 85;
+                                $bg="bg-warning"
+                            ?>
+                            @else
+                            <?php 
+                                $width = 100;
+                                $bg="bg-success"
+                            ?>
+                            
+                            @endif                         
                             <tr>
                                 <th scope="row">{{ $order->id }}</th>
                                 <td>{{ $order->user->name }}</td>
+                                <td>{{ $order->instructor->user->name }}</td>
+                                <td>{{ $order->price}}</td>
+
                                 <td>{{ $order->appointment }}</td>
                                 <td>
                                     <div class="progress" style="height: 8px;">
-                                        <div class="progress-bar" role="progressbar" style="width: {{ $width }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar {{ $bg }}" role="progressbar" style="width: {{ $width }}%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </td>
                                 <td><span class="status-p {{ $bg }}">{{ $order->status }}</span></td>

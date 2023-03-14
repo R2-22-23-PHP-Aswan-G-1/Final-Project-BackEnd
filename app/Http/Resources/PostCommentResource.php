@@ -19,6 +19,7 @@ class PostCommentResource extends JsonResource
             'id' => $this->id,
             'created_at' => $this->created_at,
             'userId' => $this->user_id,
+            'user_image' => $this->user->image,
             'userName' => $this->user->name,
             'body' => $this->body,
             'postId' => $this->post_id,
