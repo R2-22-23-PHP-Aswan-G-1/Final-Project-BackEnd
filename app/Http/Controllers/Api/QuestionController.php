@@ -20,6 +20,10 @@ class QuestionController extends Controller
             foreach ($qcomment as $item) {
                 $reply=$item->reply;
                 $insructor=$item->instructor->user;
+                foreach ($reply as $itemr) {
+                    $itemr->user;
+               
+                }
             }
         }
         // return QuestionResource::collection($questions);
@@ -52,7 +56,7 @@ class QuestionController extends Controller
 
     }
 
-    public function update(Request $request, $id )
+    public function update(StoreQuestionRequest $request, $id )
     {
 
         $question= Question::where('id',$id)->update([
@@ -79,7 +83,12 @@ class QuestionController extends Controller
             $user=$item->user;
             $subtrack=$item->subtrack;
             foreach ($qcomment as $item) {
-                $item->reply;
+                $reply=$item->reply;
+                foreach ($reply as $item) {
+                    $item->user;
+               
+                }
+           
             }
         }
         return response()->json(['data'=>$questions]);

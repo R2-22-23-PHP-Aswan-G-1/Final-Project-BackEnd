@@ -56,7 +56,7 @@ class PostController extends Controller
         ]);
         $flag = Comment::create([
             'body' => $request->body,
-            'user_id' => Auth::id(),
+            'user_id' => $request->user_id,
             'post_id' => $request->post_id,
         ]);
         if ($flag) {

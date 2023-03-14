@@ -61,7 +61,7 @@ class QcommentController extends Controller
     
     public function destroy( $qcomment_id)
     {
-        Qucomment::find($qcomment_id)->delete();
+        Qcomment::find($qcomment_id)->delete();
         return $this->index();
     }
 

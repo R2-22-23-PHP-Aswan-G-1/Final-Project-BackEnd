@@ -28,12 +28,14 @@ class StoreQuestionRequest extends FormRequest
         {
             return [
                 'question_body' => ['required'],
+                "subtrack_id" =>['required']
 
             ];
         }
          function messages(){
             return [
-                'question_body.required'=> 'The Filed Body Is Required'
+                'question_body.required'=> 'The Filed Body Is Required',
+                'subtrack_id.required' =>  "should not leave ubtrack field is empty"
             ];
         }
     }
