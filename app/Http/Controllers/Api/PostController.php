@@ -16,9 +16,15 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::all()->sortDesc();
         return (['message' => 'success', 'data' => PostResource::collection($posts)]);
     }
+    public function getpostsbyinstrctorid($instructor_id)
+    {
+        $posts = Post::select('*')->where('instructor_id',$instructor_id)->get();
+        return (['message' => 'success', 'data' => PostResource::collection($posts)]);
+    }
+
 
     public function store(StorePostRequest $request)
     {

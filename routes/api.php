@@ -41,8 +41,9 @@ Route::get('/user/getUserReplies/{user_id}', [UserController::class ,'getUserRep
 Route::get('/user/getUserOrders/{user_id}', [UserController::class ,'getUserOrders'])->name('user.getUserOrders');
 
 ///////////////////////////////////////////////////////////////////////////////////////
-//questions routes
+//questions routes getquestionbyuser
 Route::get('/questions', [QuestionController::class ,'index'])->name('questions.index');
+Route::get('/getquestionbyuser/{user_id}', [QuestionController::class ,'getquestionbyuser']);
 Route::get('/questions/fristquestion', [QuestionController::class ,'indexfristquestion']);
 Route::get('/questions/tenfristquestion', [QuestionController::class ,'indextenfristquestion']);
 Route::get('/questions/show/{question_id}', [QuestionController::class ,'show'])->name('questions.show');
@@ -121,6 +122,7 @@ Route::delete('/delete/comment/{comment}', [PostController::class, 'deleteCommen
 Route::delete('/deletePost/{post}', [PostController::class, 'destroy']);
 Route::put('/updatePost/{post}', [PostController::class, 'update']);
 Route::get('/posts', [PostController::class, 'index']);
+Route::get('/getpostsbyinstrctorid/{id}', [PostController::class, 'getpostsbyinstrctorid']);
 
 ?>
 
