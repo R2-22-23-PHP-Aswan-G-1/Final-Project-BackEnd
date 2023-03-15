@@ -11,32 +11,21 @@ class StoreQuestionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\Rule|array|string>
-     */
-    public function rules(): array
+    function rules(): array
     {
-        // return [
-        //     //
-        // ];
-         function rules(): array
-        {
-            return [
-                'question_body' => ['required'],
-                "subtrack_id" =>['required']
+        return [
+            'question_body' => ['required'],
+            "subtrack_id" => ['required']
 
-            ];
-        }
-         function messages(){
-            return [
-                'question_body.required'=> 'The Filed Body Is Required',
-                'subtrack_id.required' =>  "should not leave ubtrack field is empty"
-            ];
-        }
+        ];
+    }
+    function messages()
+    {
+        return [
+            'question_body.required' => 'The Filed Body Is Required',
+            'subtrack_id.required' =>  "should not leave ubtrack field is empty"
+        ];
     }
 }

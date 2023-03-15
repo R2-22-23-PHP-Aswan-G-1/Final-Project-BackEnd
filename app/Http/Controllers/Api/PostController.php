@@ -10,9 +10,11 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
+use App\Http\traits\InstructorTrait;
 
 class PostController extends Controller
 {
+    use InstructorTrait;
 
     public function index()
     {
@@ -21,7 +23,12 @@ class PostController extends Controller
     }
     public function getpostsbyinstrctorid($instructor_id)
     {
-        $posts = Post::select('*')->where('instructor_id',$instructor_id)->get();
+        $posts = Post::select('*')->where('instructor_id',$instructor_id)->latest()->get();
+        return (['message' => 'success', 'data' => PostResource::collection($posts)]);
+    }
+
+    public function searchpost($search){
+        $posts = Post::select('*')->where('body',"like",'%'.$search.'%')->latest()->get();
         return (['message' => 'success', 'data' => PostResource::collection($posts)]);
     }
 
@@ -32,6 +39,7 @@ class PostController extends Controller
             'body' => $request->body,
             'instructor_id' =>$request->instructor_id,
         ]);
+        $this->increasePoints(Auth::user()->instructor);
         return (['message' => 'success']);
     }
 

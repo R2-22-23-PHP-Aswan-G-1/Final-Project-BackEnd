@@ -43,13 +43,4 @@ class subtrackController extends Controller
         return new SubtrackResource($subtrack);
     }
 
-    // public function update(Request $request, Sub_track $sub_track)
-    // {
-    //     //
-    // }
-
-    // public function destroy(Sub_track $sub_track)
-    // {
-    //     //
-    // }
 }

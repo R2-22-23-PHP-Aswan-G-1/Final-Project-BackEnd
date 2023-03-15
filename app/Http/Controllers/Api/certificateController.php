@@ -8,33 +8,25 @@ use App\Models\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use App\Http\traits\InstructorTrait;
 
 class certificateController extends Controller
 {
+    use InstructorTrait;
     public function store(StoreCertificateRequest $request)
     {
-        // dd($request->certificate);
         $request->certificate->storeAs("public/imgs",$request->certificate->getClientOriginalName());
         Certificate::create([
             'certificate' => $request->certificate->getClientOriginalName(),
             'instructor_id' => Auth::user()->instructor->id,
         ]);
+        $this->increasePoints(Auth::user()->instructor);
         return (['message' => 'succes']);
     }
 
     public function destroy(Certificate $certificate)
-    {
-        // $allCertificates = Auth::user()->instructor->certificates->get();
-        // for ($i = 0; $i < count($allCertificates); $i++) {
-        //     if ($certificate->id ==   $allCertificates[$i]->id) {
-        //         $certificate->delete();
-        //         return (['message' => 'success']);
-        //     }
-        // }
-        
-            $certificate->delete();
-
-       
+    {   
+            $certificate->delete();       
         return response()->json(['message' => 'success']);
     }
 }

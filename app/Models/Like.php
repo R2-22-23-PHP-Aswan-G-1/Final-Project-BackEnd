@@ -16,7 +16,7 @@ class Like extends Model
     ];
 
     public function comment(){
-        $this->belongsTo(Comment::class);
+        $this->belongsTo(Qcomment::class);
     }
     public function user(){
         $this->belongsTo(User::class);

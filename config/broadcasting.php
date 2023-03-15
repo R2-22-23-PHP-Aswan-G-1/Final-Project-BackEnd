@@ -27,7 +27,10 @@ return [
     | each available type of connection are provided inside this array.
     |
     */
-
+    'options' => [
+        'cluster' => 'eu',
+        'useTLS' => true
+      ],
     'connections' => [
 
         'pusher' => [
@@ -44,7 +47,10 @@ return [
             ],
             'client_options' => [
                 // Guzzle client options: https://docs.guzzlephp.org/en/stable/request-options.html
-            ],
+            ],'options' => [
+                'cluster' => 'eu',
+                'useTLS' => true
+              ],
         ],
 
         'ably' => [

@@ -11,6 +11,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Models\Instructor;
 use App\Http\Controllers\Api\InstructorController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\profileController;
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/storeCertificate', [certificateController::class, 'store']);
@@ -21,6 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/storeInstructorWorkHistory', [InstructorController::class, 'storeInstructorWorkHistory']);
     Route::post('/instructorSkill', [InstructorController::class, 'storeSkills']);
     Route::get('/instructor/{instructor}', [InstructorController::class, 'show']);
+    Route::post('/update/instructor/education/{education}', [profileController::class, 'update_instructor_education']);
 });
 
 Route::get('/topTenInstructors', [InstructorController::class, 'topTenInstructors']);

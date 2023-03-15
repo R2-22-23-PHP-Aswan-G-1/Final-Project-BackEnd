@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('major')->nullable();
             $table->longText('workHistory')->nullable();
-            $table->string('rate')->default('Beginer');
+            $table->enum('rate' , ['Junior' , 'Mid Senior' , 'Senior' , 'Top Rated'])->default('Junior');
             $table->integer('points')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

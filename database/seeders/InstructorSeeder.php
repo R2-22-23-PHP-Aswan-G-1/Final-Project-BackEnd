@@ -17,7 +17,7 @@ class InstructorSeeder extends Seeder
         $user_ids = User::where('role_id' , 2)->get();
         for ($i=0; $i < count($user_ids); $i++) {
             $instructor = Instructor::create([
-                'rate' => $i,
+                'rate' => 'Junior',
                 'supertrack_id' => 1,
                 'user_id' => $user_ids[$i]['id'],
             ]);

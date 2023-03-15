@@ -9,29 +9,33 @@ use App\Models\Subtrack;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Stmt\Return_;
+use App\Http\traits\InstructorTrait;
 
 class TestController extends Controller
 {
+    use InstructorTrait;
     public function show(Subtrack $subtrack)
     {
-        return (['message'=>'success' , 'test' => TestResource::collection($subtrack->tests)]) ;
+        return (['message' => 'success', 'test' => TestResource::collection($subtrack->tests)]);
     }
-    public function index(Request $request) {
-
+    public function index(Request $request)
+    {
         $answers = $request->answer;
-        $instructor = Auth::user()->instructor;   
-        $answer = Answer::where('id' , $answers[1])->first();
+        $instructor = Auth::user()->instructor;
+        $answer = Answer::where('id', $answers[1])->first();
         $subtrack = $answer->test->subTrack;
         $counter = 0;
-        for ($i=0; $i < count($answers) ; $i++) { 
-            if (Answer::where('id' , $answers[$i])->select('correct')->get()){
+        for ($i = 0; $i < count($answers); $i++) {
+            $correct = Answer::where('id', $answers[$i])->first();
+            if ($correct['correct'] == 1) {
                 $counter++;
             }
         };
-        $avg = $counter / (count($answers)-1);
-        if($avg > .85){
+        $avg = ($counter / (count($answers)) / 100) * 100;
+        if ($avg > .85) {
+            $this->increasePoints(Auth::user()->instructor);
             $instructor->subtracks()->attach($subtrack);
         }
-        return (['message' =>'success' , 'mark'=>$counter , 'percentage' => $avg*100]);
+        return (['message' => 'success', 'mark' => $counter, 'percentage' => $avg * 100]);
     }
 }

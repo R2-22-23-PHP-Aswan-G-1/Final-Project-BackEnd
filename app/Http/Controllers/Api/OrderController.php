@@ -15,9 +15,11 @@ use App\Models\Service;
 use App\Models\Supertrack;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\traits\InstructorTrait;
+
 class OrderController extends Controller
 {
-
+use InstructorTrait;
     public function index()
     {
         $orders = Order::all();
@@ -79,6 +81,7 @@ class OrderController extends Controller
         $order->status = "completed";
         $order->save();
         Offer::where('order_id', $order->id)->delete();
+        $this->increasePoints($order->instructor);
         return (['message' => 'success']);
     }
     public function showOrderAccordingToTrack()
