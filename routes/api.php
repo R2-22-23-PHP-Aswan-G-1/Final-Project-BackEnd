@@ -41,8 +41,10 @@ Route::get('/user/getUserReplies/{user_id}', [UserController::class ,'getUserRep
 Route::get('/user/getUserOrders/{user_id}', [UserController::class ,'getUserOrders'])->name('user.getUserOrders');
 
 ///////////////////////////////////////////////////////////////////////////////////////
-//questions routes
+//questions routes getquestionbyuser
 Route::get('/questions', [QuestionController::class ,'index'])->name('questions.index');
+Route::get('/getquestionbyuser/{user_id}', [QuestionController::class ,'getquestionbyuser']);
+Route::get('/searchquestions/{search}', [QuestionController::class ,'searchquestions']);
 Route::get('/questions/fristquestion', [QuestionController::class ,'indexfristquestion']);
 Route::get('/questions/tenfristquestion', [QuestionController::class ,'indextenfristquestion']);
 Route::get('/questions/show/{question_id}', [QuestionController::class ,'show'])->name('questions.show');
@@ -116,11 +118,12 @@ Route::middleware('auth:sanctum')->group(function () {
 ///////////////////////////
 Route::post('/storePost', [PostController::class, 'store']);
 Route::post('/addPostComment', [PostController::class, 'addComment']);
+Route::get('/searchpost/{search}', [PostController::class, 'searchpost']);
 Route::put('/update/comment/{comment}', [PostController::class, 'updateComment']);
 Route::delete('/delete/comment/{comment}', [PostController::class, 'deleteComment']);
 Route::delete('/deletePost/{post}', [PostController::class, 'destroy']);
 Route::put('/updatePost/{post}', [PostController::class, 'update']);
 Route::get('/posts', [PostController::class, 'index']);
+Route::get('/getpostsbyinstrctorid/{id}', [PostController::class, 'getpostsbyinstrctorid']);
 
 ?>
-

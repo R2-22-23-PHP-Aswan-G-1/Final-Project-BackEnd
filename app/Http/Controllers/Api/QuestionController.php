@@ -21,6 +21,7 @@ class QuestionController extends Controller
             $subtrack = $item->subtrack;
             foreach ($qcomment as $item) {
                 $reply = $item->reply;
+                $like=$item->like;
                 $insructor = $item->instructor->user;
                 foreach ($reply as $itemr) {
                     $itemr->user;
@@ -30,8 +31,52 @@ class QuestionController extends Controller
         return response()->json(['data' => $questions]);
     }
 
+
+    public function getquestionbyuser($user_id){
+        $questions = Question::select('*')->where('user_id',$user_id)->latest()->get();
+        foreach ($questions as $item) {
+            $qcomment=$item->qcomment;
+            $user=$item->user;
+            $subtrack=$item->subtrack;
+            
+            foreach ($qcomment as $item) {
+                $reply=$item->reply;
+                $like=$item->like;
+                $insructor=$item->instructor->user;
+                foreach ($reply as $itemr) {
+                    $itemr->user;
+               
+                }
+            }
+        }
+        // return QuestionResource::collection($questions);
+        return response()->json(['data'=>$questions]);
+    }
+
+    public function searchquestions($search){
+        $questions = Question::select('*')->where('question_body',"like",'%'.$search.'%')->latest()->get();
+        foreach ($questions as $item) {
+            $qcomment=$item->qcomment;
+            $user=$item->user;
+            $subtrack=$item->subtrack;
+            foreach ($qcomment as $item) {
+                $reply=$item->reply;
+                $like=$item->like;
+                $insructor=$item->instructor->user;
+                foreach ($reply as $itemr) {
+                    $itemr->user;
+               
+                }
+            }
+        }
+        // return QuestionResource::collection($questions);
+        return response()->json(['data'=>$questions]);
+    }
+
+
     public function show($question_id)
     {
+
         $question =  Question::find($question_id);
 
         $question->qcomment;
