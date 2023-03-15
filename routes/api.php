@@ -75,7 +75,7 @@ Route::put('/services/update/{service}' , [ServiceController::class ,'update'])-
 Route::get('/orders' , [OrderController::class ,'index'])->name('orders.index');
 // Route::get('/orders/show/{user_id}/{role}', [OrderController::class ,'show'])->name('orders.show');
 Route::get('/orders/show/{order_id}' , [OrderController::class ,'show'])->name('orders.show');
-Route::post('/orders/store' , [OrderController::class ,'store'])->name('orders.store');
+// Route::post('/orders/store' , [OrderController::class ,'store'])->name('orders.store');
 Route::delete('/orders/delete/{order}' , [OrderController::class ,'destroy'])->name('orders.destroy');
 Route::put('/orders/update/{order}' , [OrderController::class ,'update'])->name('orders.update');
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

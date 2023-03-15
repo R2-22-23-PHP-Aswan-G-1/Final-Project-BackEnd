@@ -5,8 +5,8 @@
             <div class="d-flex">
                 <h4 class="header-title">{{ $track->name }}</h4>
                 <br>
-                <a class="ml-5" href="">delete</a>
-                <a class="ml-5" href="">update</a>
+                <a class="ml-5" href="{{ route('track.edit' , $track->id) }}">Update</a>
+                <a class="ml-5" href="">Delete</a>
             </div>
             <div class="single-table">
                 <div class="table-responsive">
@@ -27,7 +27,7 @@
                                    <a href="{{ route('track.questions.show',$subtrack->id) }}">
                                     <i class="fa-2x fa-solid fa-circle-question"></i> 
                                     </a>       
-                                    <a href="{{ route('track.questions.show',$subtrack->id) }}">
+                                    <a href="{{ route('track.instructors.show',$subtrack->id) }}">
                                         <i class="fa-2x fas fa-regular fa-users"></i>
                                     </a>                           
                             </td>
@@ -40,4 +40,5 @@
         </div>
     </div>
 
+    
 @endsection

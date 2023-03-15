@@ -1,18 +1,28 @@
 <!DOCTYPE html>
 <head>
-  <title>Laravel 8 Pusher Notification Example Tutorial - XpertPhp</title>
-  <h1>Laravel 8 Pusher Notification Example Tutorial</h1>
-  <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+  <title>Pusher Test</title>
+  <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
   <script>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
 
-   var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
-      cluster: '{{env("PUSHER_APP_CLUSTER")}}',
+    var pusher = new Pusher('220a16b4951657f7d612', {
+      cluster: 'eu',
       encrypted: true
     });
 
-    var channel = pusher.subscribe('notify-channel');
-    channel.bind('App\\Events\\Notify', function(data) {
-      alert(data.message);
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('App\\Events\\MyEvent', function(data) {
+      alert(JSON.stringify(data));
     });
   </script>
 </head>
+<body>
+    
+  <h1>Pusher Test</h1>
+  <p>
+    Try publishing an event to channel <code>my-channel</code>
+    with event name <code>my-event</code>
+    .
+  </p>
+</body>

@@ -30,19 +30,7 @@ $tracks = App\Models\Supertrack::all();
     <script src="{{ asset('js/vendor/modernizr-2.8.3.min.js') }}"></script>
     {{-- //pusher --}}
 
-    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-  <script>
 
-   var pusher = new Pusher('{{env("MIX_PUSHER_APP_KEY")}}', {
-      cluster: '{{env("PUSHER_APP_CLUSTER")}}',
-      encrypted: true
-    });
-
-    var channel = pusher.subscribe('notify-channel');
-    channel.bind('App\\Events\\Notify', function(data) {
-      alert(data.message);
-    });
-  </script>
 </head>
 <body>
     <div id="preloader">
@@ -90,6 +78,13 @@ $tracks = App\Models\Supertrack::all();
                                 </ul>
                             </li>
                             <li>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-slice"></i><span>Tests</span></a>
+                                <ul class="collapse">
+                                    <li><a href="">fontawesome icons</a></li>
+                                    <li><a href="">themify icons</a></li>
+                                </ul>
+                            </li>
+                            <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>UI Features</span></a>
                                 <ul class="collapse">
                                     <li><a href="accordion.html">Accordion</a></li>
@@ -109,13 +104,6 @@ $tracks = App\Models\Supertrack::all();
                                     <li><a href="typography.html">Typography</a></li>
                                     <li><a href="form.html">Form</a></li>
                                     <li><a href="grid.html">grid system</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-slice"></i><span>icons</span></a>
-                                <ul class="collapse">
-                                    <li><a href="fontawesome.html">fontawesome icons</a></li>
-                                    <li><a href="themify.html">themify icons</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -378,5 +366,23 @@ $tracks = App\Models\Supertrack::all();
     <!-- others plugins -->
     <script src="{{ asset('/js/plugins.js') }} "></script>
     <script src="{{ asset('/js/scripts.js') }} "></script>
+    <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+  <script>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('220a16b4951657f7d612', {
+      cluster: 'eu',
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('App\\Events\\MyEvent', function(data) {
+    
+        alert(JSON.stringify(data));
+        location.reload() 
+
+    });
+  </script>
 </body>
 </html>

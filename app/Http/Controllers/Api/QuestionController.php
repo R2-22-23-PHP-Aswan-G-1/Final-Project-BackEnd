@@ -96,7 +96,7 @@ class QuestionController extends Controller
     {
 
         $questions = Question::select('*')->where("subtrack_id", $subtrackid)->skip(0)->take(1)->get();
-        return QuestionResource::collection($questions );
+        return QuestionResource::collection($questions);
     }
 
     public function showtenfristFilter($subtrackid)

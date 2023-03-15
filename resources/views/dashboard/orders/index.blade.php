@@ -47,7 +47,11 @@
                             <tr>
                                 <th scope="row">{{ $order->id }}</th>
                                 <td>{{ $order->user->name }}</td>
+                                @if ($order->instructor != null)
                                 <td>{{ $order->instructor->user->name }}</td>
+                                @else
+                                <td> Not Determined</td>
+                                @endif
                                 <td>{{ $order->price}}</td>
 
                                 <td>{{ $order->appointment }}</td>
@@ -76,3 +80,6 @@
     </div>
 </div>
 @endsection
+
+
+{{-- @endsection --}}

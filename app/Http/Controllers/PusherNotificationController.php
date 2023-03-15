@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use Pusher\Pusher;
+use Illuminate\Http\Request;
 
 class PusherNotificationController extends Controller
 {
@@ -13,15 +12,16 @@ class PusherNotificationController extends Controller
 			'cluster' => env('PUSHER_APP_CLUSTER'),
 			'encrypted' => true
 		);
+        // dd(env('PUSHER_APP_KEY'));
         $pusher = new Pusher(
 			env('PUSHER_APP_KEY'),
 			env('PUSHER_APP_SECRET'),
-			env('PUSHER_APP_ID'), 
+			env('PUSHER_APP_ID'),
 			$options
 		);
- 
+
         $data['message'] = 'Hello XpertPhp';
-        $pusher->trigger('notify-channel', 'App\\Events\\Notify', $data);
- 
+        $pusher->trigger('my-channel', 'App\\Events\\MyEvent', $data);
+
     }
 }

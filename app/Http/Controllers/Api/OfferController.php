@@ -14,20 +14,14 @@ class OfferController extends Controller
     {
         $request->validate([
             'order_id' => ['required', 'exists:App\Models\Order,id'],
-            'price' =>['required'],
+            'price' => ['required'],
         ]);
-        $order = Order::where('id' , $request->order_id);
-        $instructor_ids = $order->offers->instructor->id;
-        dd($instructor_ids);
+        $order = Order::where('id', $request->order_id);
         Offer::create([
-            'price'=>$request->price,
+            'price' => $request->price,
             'order_id' => $request->order_id,
             'instructor_id' => Auth::user()->instructor->id
         ]);
         return (['message' => 'success']);
-    }
-
-    public function acceptOffer()
-    {
     }
 }

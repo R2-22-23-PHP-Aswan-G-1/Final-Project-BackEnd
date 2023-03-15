@@ -45,13 +45,13 @@ class UserController extends Controller
     public function getUserOrders($user_id)
     {
         $user = User::find($user_id);
-        return (['message'=>'success' , 'order' => OrderResource::collection($user->order)]);
+        return (['message' => 'success', 'order' => OrderResource::collection($user->order)]);
     }
 
     public function setUserImage(Request $request)
     {
 
-        $request->image->storeAs("public/imgs",$request->image->getClientOriginalName());
+        $request->image->storeAs("public/imgs", $request->image->getClientOriginalName());
         $request->validate([
             'image' => ['required', 'image']
         ]);

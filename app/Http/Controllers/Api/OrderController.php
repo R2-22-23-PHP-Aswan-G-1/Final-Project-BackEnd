@@ -9,6 +9,7 @@ use App\Http\Resources\OrderResource;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\User;
+use Pusher\Pusher;
 use App\Models\Instructor;
 use App\Models\Offer;
 use App\Models\Service;
@@ -19,7 +20,7 @@ use App\Http\traits\InstructorTrait;
 
 class OrderController extends Controller
 {
-use InstructorTrait;
+    use InstructorTrait;
     public function index()
     {
         $orders = Order::all();
@@ -44,8 +45,21 @@ use InstructorTrait;
             'price' => $request->price,
             'appointment' => $request->appointment
         ]);
+        $options = array(
+            'cluster' => env('PUSHER_APP_CLUSTER'),
+            'encrypted' => true
+        );
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY'),
+            env('PUSHER_APP_SECRET'),
+            env('PUSHER_APP_ID'),
+            $options
+        );
+        $data = 'new order from'." ". Auth::user()->name;
+        $pusher->trigger('my-channel', 'App\\Events\\MyEvent', $data);
         return (['message' => 'success']);
     }
+
 
     public function destroy(Order $order)
     {

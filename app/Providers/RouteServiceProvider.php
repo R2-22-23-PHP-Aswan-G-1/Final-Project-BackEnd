@@ -29,15 +29,16 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api/student.php'))
                 ->group(base_path('routes/api/services.php'))
                 ->group(base_path('routes/api/skill.php'))
-                ->group(base_path('routes/api/testimonial.php'))        
+                ->group(base_path('routes/api/testimonial.php'))
                 ->group(base_path('routes/api/track.php'))
                 ->group(base_path('routes/api/profile.php'))
                 ->group(base_path('routes/api/language.php'))
                 ->group(base_path('routes/api/postReplay.php'))
                 ->group(base_path('routes/api/user.php'))
                 ->group(base_path('routes/api/tests.php'))
+                ->group(base_path('routes/api/chat.php'))
                 ->group(base_path('routes/api.php'));
-                
+
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
@@ -53,4 +54,3 @@ class RouteServiceProvider extends ServiceProvider
         });
     }
 }
-
