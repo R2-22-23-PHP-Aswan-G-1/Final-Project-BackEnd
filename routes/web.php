@@ -36,6 +36,9 @@ Route::get('/show/instructors/{track}', [App\Http\Controllers\InstructorControll
 
 Route::post('/update/{track}' , [App\Http\Controllers\supertrackController::class, 'update'])->name('track.update');
 
+Route::get('/show/test/{subtrack}', [App\Http\Controllers\TestController::class, 'show'])->name('tests.show');
+Route::get('/create/test/{subtrack}', [App\Http\Controllers\TestController::class, 'create'])->name('tests.create');
+Route::post('/store/test', [App\Http\Controllers\TestController::class, 'store'])->name('tests.store');
 
 // Route::get('/notification', function () {
 //     return view('notification');

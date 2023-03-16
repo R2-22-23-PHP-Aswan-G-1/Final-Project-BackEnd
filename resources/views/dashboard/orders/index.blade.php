@@ -42,7 +42,6 @@
                                 $width = 100;
                                 $bg="bg-success"
                             ?>
-                            
                             @endif                         
                             <tr>
                                 <th scope="row">{{ $order->id }}</th>
@@ -79,6 +78,10 @@
         </div>
     </div>
 </div>
+<div class="container">
+    {{ $orders->links() }}
+  
+  </div>
 @endsection
 
 

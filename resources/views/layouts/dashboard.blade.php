@@ -1,6 +1,7 @@
 <?php 
 $services = App\Models\Service::all();
 $tracks = App\Models\Supertrack::all();
+$subtracks = App\Models\Subtrack::all();
 
 ?>
 <!doctype html>
@@ -50,14 +51,6 @@ $tracks = App\Models\Supertrack::all();
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                <ul class="collapse">
-                                    <li class="active"><a href="index.html">ICO dashboard</a></li>
-                                    <li><a href="index2.html">Ecommerce dashboard</a></li>
-                                    <li><a href="index3.html">SEO dashboard</a></li>
-                                </ul>
-                            </li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>
                                         Services In Progress
@@ -80,11 +73,12 @@ $tracks = App\Models\Supertrack::all();
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-slice"></i><span>Tests</span></a>
                                 <ul class="collapse">
-                                    <li><a href="">fontawesome icons</a></li>
-                                    <li><a href="">themify icons</a></li>
+                                    @foreach ( $subtracks as $subtrack)
+                                    <li><a href="{{ route('tests.show' , $subtrack->id )}}">{{ $subtrack->name }}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="ti-palette"></i><span>UI Features</span></a>
                                 <ul class="collapse">
                                     <li><a href="accordion.html">Accordion</a></li>
@@ -157,7 +151,7 @@ $tracks = App\Models\Supertrack::all();
                                     </li>
                                     <li><a href="#">Item level (1)</a></li>
                                 </ul>
-                            </li>
+                            </li> --}}
                         </ul>
                     </nav>
                 </div>
@@ -334,7 +328,7 @@ $tracks = App\Models\Supertrack::all();
         </div>
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+                <p>No Questions Founded.</p>
             </div>
         </footer>
 </div>

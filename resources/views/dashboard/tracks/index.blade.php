@@ -15,7 +15,6 @@
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Name</th>
-                                <th scope="col"> Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -23,14 +22,6 @@
                             <tr>
                                 <th scope="row">{{ $subtrack->id }}</th>
                                 <td>{{ $subtrack->name }}</td>
-                                <td>
-                                   <a href="{{ route('track.questions.show',$subtrack->id) }}">
-                                    <i class="fa-2x fa-solid fa-circle-question"></i> 
-                                    </a>       
-                                    <a href="{{ route('track.instructors.show',$subtrack->id) }}">
-                                        <i class="fa-2x fas fa-regular fa-users"></i>
-                                    </a>                           
-                            </td>
                             </tr>
                             @endforeach     
                         </tbody>
